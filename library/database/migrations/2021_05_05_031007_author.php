@@ -20,7 +20,9 @@ class Author extends Migration
             $table->string('Description')->nullable();
             $table->string('image')->nullable();
             $table->string('facebook');
-            $table->string('Twitter');         
+            $table->string('twitter');  
+            $table->timestamp('last_used_at')->nullable();
+            $table->timestamps();       
         });
     }
 

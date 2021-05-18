@@ -138,15 +138,7 @@ class bookController extends Controller
             'Description' => $request->bookDes,
             'image' => $imageName
         ]);
-        if($book->image!=null)
-        {
-            return redirect()->route('book.index')->with('msg','Update Thanh cong');
-        }
-        else
-        {
-            return redirect()->route('book.index')->with('msg','Bạn phải chọn ảnh');
-        }
-
+        return redirect()->route('book.index')->with('msg','Update Thanh cong');            
     }
 
     /**

@@ -11,7 +11,7 @@
     <div class="container">
         <!-- Form thêm sản phẩm -->
         <h1>CREATE A Book</h1>
-        <form action="{{route('book.store')}}" method="POST" role="form" enctype="multipart/form-data">
+        <form action="{{route('book.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="productName">Name book</label>

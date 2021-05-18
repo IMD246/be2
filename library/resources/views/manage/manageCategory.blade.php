@@ -13,35 +13,31 @@
         <!-- Xuất thông báo -->    
         <div class="row">
             <div class="col-6">
-                <h1>Manage Books</h1>
+                <h1>Manage Category</h1>
             </div>      
         </div>       
         <table class="table">
             <thead>
                 <td>ID</td>
-                <td style="width: 50px;">Book Photo</td>
-                <td>Book Name</td>
-                <td>Chức năng</td>
-            </thead>
-            {{-- create --}}
-            <form action='{{ route('book.create') }}' method="GET">
-                <button type="submit" class="btn btn-success" style="margin-left: 80%">Thêm Book Mới</button>
-            </form>  
-            @foreach ($databook as $item)
-            <tr>
-                
-                <td>{{ $item->idBook }}</td>
-                <td><img src="{{url('images/books')}}/{{$item->image}}" class="img-fluid" alt="..."></td>
-                <td>{{ $item->nameBook }}</td>
+                <td>Category Name</td>
+                {{-- create --}}               
+            </thead>  
+            <form action='{{ route('category.create') }}' method="GET">
+                <button type="submit" class="btn btn-success"  style="margin-left: 70%">Thêm Category Mới</button>
+            </form>                   
+            @foreach ($data as $item)
+            <tr>               
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->nameCategory}}</td>
                 <td>                   
                     {{-- update --}}
                     
-                    <form action='{{route('book.edit',$item->idBook)}}' method="GET">
+                    <form action='{{route('category.edit',$item->id)}}' method="GET">
                         <button type="submit" class="btn btn-danger">Update </button>
                     </form>   
 
                     {{-- delete --}}
-                    <form action="{{route('book.destroy',$item->idBook)}}" method="POST">
+                    <form action="{{route('category.destroy',$item->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">DELETE</button>
