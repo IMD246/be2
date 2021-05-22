@@ -1,0 +1,4 @@
+Dùng tìm kiếm
+startForeach 
+endForeach
+Để biết chèn dữ liệu ở đâu
