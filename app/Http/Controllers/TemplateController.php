@@ -21,6 +21,7 @@ class TemplateController extends Controller
         $threenewstbook = Book::orderBy('created_at','desc')->limit(3)->get();
         $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
         //return
+        
         return view('template.index')->with(compact('data'))->with(compact('data1'))
         ->with(compact('allcategory'))->with(compact('temp1'))->with(compact('temp'))
         ->with(compact('threenewstbook')) ->with(compact('featureArrayBook')) ->with(compact('top3Author'));
@@ -31,7 +32,7 @@ class TemplateController extends Controller
         $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
         //return
 
-        return view ('template.contactus')->with(compact('category'))->with(compact('allcategory')) ->with(compact('top3Author'));
+        return view ('email')->with(compact('category'))->with(compact('allcategory')) ->with(compact('top3Author'));
     }
 
 
@@ -155,7 +156,7 @@ class TemplateController extends Controller
     public function getAuth(){
         $role=Auth::user()->role;
         if($role=='1'){
-            return view('manage.manageAuthor');
+            return view('book');
         }
         else{
             return redirect()->route('template.index');

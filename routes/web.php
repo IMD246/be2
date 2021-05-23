@@ -8,6 +8,7 @@ use App\Http\Controllers\lacontrol;
 use App\Http\Controllers\bookController;
 use App\Http\Controllers\TemplateController;
 
+use App\Http\Controllers\UserAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,14 +40,15 @@ Route::post('/book_detail.blade.php?idBook={id}',[TemplateController::class,'upd
 Route::get('redirects',[TemplateController::class,'getAuth']);
 //best_sell
 //book_detail.cart,category,handlecart,newbook
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+//Route logout
+Route::get('/logout', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -74,3 +76,26 @@ Route::resource('book','bookController');
 Route::resource('author','authorController');
 Route::resource('category','categoryController');
 Route::resource('template','templateController');
+
+
+//Send email form user to admin
+Route::get('/email', 'EmailController@create');
+Route::post('/email', 'EmailController@sendEmail')->name('send.email');
+//new sesstion
+
+//////////////////////test
+
+Route::get('/getLogin', function(){
+    if(session()->has('user')){
+      return redirect('information');
+    }
+    return view('getLogin');
+});
+Route::post('user',[UserAuth::class,'userLogin']);
+Route::view('information','information');
+Route::get('/klogout', function(){
+    if(session()->has('user')){
+        session()->pull('user');
+    }
+    return redirect('getLogin');
+});

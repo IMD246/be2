@@ -1,5 +1,5 @@
 
-   @section('head')
+  @section('head')
 
             <div class="tg-middlecontainer">
                 <div class="container">
@@ -22,7 +22,7 @@
                             <div class="tg-userlogin">
                                 <figure><a href="javascript:void(0);"><img src="images/users/img-01.jpg"
                                             alt="image description"></a></figure>
-                                <span>Hi,John</span>
+                                          Hello: {{session('users_id')}}
                             </div>
                         </div>
                     </div>

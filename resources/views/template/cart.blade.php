@@ -1,3 +1,11 @@
+
+  <?php
+  if (session('user')){
+     var_dump('Ton tai');
+  }else{
+    var_dump('khong tin tai');
+  }
+  ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 

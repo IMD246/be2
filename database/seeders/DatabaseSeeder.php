@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(
             DataCategory::class,
         );
+        $this->call(
+            DataUsers::class,
+        );
     }
 }
