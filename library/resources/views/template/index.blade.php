@@ -271,9 +271,7 @@
                         </div>
                     </div>
                     <div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
-                    @for($iw = 0; $iw <= 4; $iw++)
-
-
+                        @for($iw = 0; $iw <= 1; $iw++)
                         <div class="item">
                             <div class="tg-postbook">
                                 <figure class="tg-featureimg">
