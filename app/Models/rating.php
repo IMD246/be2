@@ -9,4 +9,8 @@ class rating extends Model
 {
     use HasFactory;
     public $table = 'ratings';
+    public function book()
+    {
+        return $this->hasMany(Book::class);
+    }
 }

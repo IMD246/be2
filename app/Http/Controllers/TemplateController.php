@@ -13,7 +13,9 @@ class TemplateController extends Controller
 {
     public function index(){
         $data = Book::all();
-        $data1 = Book::where('idBook','=','2')->first();
+        $data1 = Book::orderBy('rate','desc')->limit(3)->get();
+        $bookList = Book::orderBy('rate','desc')->limit(5)->get();
+
         $temp1= new Category;
         $temp= new Author;
         $featureArrayBook=Book::orderBy('Rate','desc')->limit(4)->get();
@@ -21,10 +23,10 @@ class TemplateController extends Controller
         $threenewstbook = Book::orderBy('created_at','desc')->limit(3)->get();
         $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
         //return
-        
+
         return view('template.index')->with(compact('data'))->with(compact('data1'))
         ->with(compact('allcategory'))->with(compact('temp1'))->with(compact('temp'))
-        ->with(compact('threenewstbook')) ->with(compact('featureArrayBook')) ->with(compact('top3Author'));
+        ->with(compact('threenewstbook')) ->with(compact('featureArrayBook')) ->with(compact('top3Author'))->with(compact('bookList'));
     }
     public function contactus(){
         $category= new Category;
@@ -60,7 +62,6 @@ class TemplateController extends Controller
         $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
         //return
 
-        $temp=$bookOfAuthor->where("idAuthor","=",1)->get();
 
 
         return view('template.authors')->with(compact('allAuthor'))->with(compact('bookOfAuthor'))->with(compact('category'))->with(compact('allcategory')) ->with(compact('top3Author'));
@@ -129,19 +130,7 @@ class TemplateController extends Controller
         return view ('template.new_book') ->with(compact('top3Author'));
     }
 
-    public function update(Request $request,$id)
-    {
-        // //xu ly va upload anh
-        $rate = new rating;
-        $rate->where('id',5)->update([
-            'idBook'=>$request->idBook,
-            'rate' => $request->star,
-            'comment'=>$request->comment,
 
-
-        ]);
-        return redirect()->route('template.index');
-    }
     //KHI NAO MA USER RATE LAN DAU THI VAO STORE BANG LENH FINDORFAIL
        public function store(Request $request)
     {

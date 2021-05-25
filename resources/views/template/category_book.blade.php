@@ -97,7 +97,7 @@
                                                             </figure>
                                                         </div>
                                                         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                                                            <img width=50 height=90 src="{{url('images/books')}}/{{ $key->image }}"
+                                                            <img src="{{url('images/books')}}/{{ $key->image }}"
                                                                 alt="i  mage fluid">
                                                             <div class="tg-featureditmcontent">
 
@@ -112,14 +112,14 @@
                                                                         href="./authordetail.blade.php?id={{ $key->idAuthor }}">{{ $temp->where('id', '=', $key->idAuthor)->first()->nameAuthor }}</a></span>
                                                             @for($x = 5; $x > 0; $x--)
                                                              @php
-                                                             if($item->rate > 0.5){
+                                                             if($key->rate > 0.5){
                                                             echo '<i class="fa fa-star"></i>';
-                                                             }elseif($item->rate <= 0 ){
+                                                             }elseif($key->rate <= 0 ){
                                                             echo '<i class="fa fa-star-o"></i>';
                                                             }else{
                                                              echo '<i class="fa fa-star-half-o"></i>';
                                                              }
-                                                         $item->rate--;
+                                                         $key->rate--;
                                                       @endphp
                                                         @endfor
                                                                 <div class="tg-priceandbtn">

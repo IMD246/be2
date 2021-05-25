@@ -49,6 +49,12 @@
 											<a href="../public/category_book.blade.php">All Categories</a>
 											<div class="mega-menu">
 												<ul class="tg-themetabnav" role="tablist">
+                                                @foreach ($allcategory as $item)
+                                                     <li class="menu-item-has-children-123" style="margin-left: 20px;">
+											            <a href="../public/category_book.blade.php?idCategory={{ $item->id }}">{{$item->nameCategory}}</a>
+
+									            	</li>
+                                                @endforeach
 
 
 

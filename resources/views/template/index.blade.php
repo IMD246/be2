@@ -1,7 +1,8 @@
 
 <!doctype html>
 <html class="no-js" lang="">
-
+@php
+@endphp
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -271,41 +272,39 @@
                         </div>
                     </div>
                     <div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
-                    @for($iw = 0; $iw <= 4; $iw++)
 
-
+                    @foreach ($bookList as $item)
                         <div class="item">
                             <div class="tg-postbook">
                                 <figure class="tg-featureimg">
                                     <div class="tg-bookimg">
-                                        <div class="tg-frontcover"><img src="{{url('images/books')}}/{{$data[$iw]->image}}"
-                                                alt="image description"></div>
+
                                     </div>
                                     <div class="tg-hovercontent">
                                         <div class="tg-description">
-                                            <p>{{$data[$iw]->Description}}</p>
+                                            <p>{{$item->Description}}</p>
                                         </div>
-                                        <strong class="tg-bookcategory">{{ $temp1->where('id', '=',$data[$iw]->idCategory)->first()->nameCategory}}</strong>
-                                        <strong class="tg-bookprice">Price: {{$data[$iw]->salePrice}}.000VND</strong>
+                                        <strong class="tg-bookcategory">{{ $temp1->where('id', '=',$item->idCategory)->first()->nameCategory}}</strong>
+                                        <strong class="tg-bookprice">Price: {{$item->salePrice}}.000VND</strong>
                                         @for($x = 5; $x > 0; $x--)
                                                     @php
-                                                             if($data[$iw]->rate > 0.5){
+                                                             if($item->rate > 0.5){
                                                             echo '<i class="fa fa-star"></i>';
-                                                             }elseif($data[$iw]->rate <= 0 ){
+                                                             }elseif($item->rate <= 0 ){
                                                             echo '<i class="fa fa-star-o"></i>';
                                                             }else{
                                                              echo '<i class="fa fa-star-half-o"></i>';
                                                              }
-                                                         $data[$iw]->rate--;
+                                                         $item->rate--;
                                                       @endphp
                                                         @endfor
                                     </div>
                                 </figure>
                                 <div class="tg-postbookcontent">
                                     <div class="tg-booktitle">
-                                        <h3><a href="./book_detail.blade.php?idBook={{ $data[$iw]->idBook }}">{{$data[$iw]->nameBook}}</a></h3>
+                                        <h3><a href="./book_detail.blade.php?idBook={{ $item->idBook }}">{{$item->nameBook}}</a></h3>
                                     </div>
-                                    <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $data[$iw]  ->idAuthor }}">{{ $temp->where('id', '=', $data[$iw]->idAuthor)->first()->nameAuthor }}</a></span>
+                                    <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{ $temp->where('id', '=', $item->idAuthor)->first()->nameAuthor }}</a></span>
                                     <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
                                         <i class="fa fa-shopping-basket"></i>
                                         <em>Add To Basket</em>
@@ -313,8 +312,8 @@
                                 </div>
                             </div>
                         </div>
-                    @endfor
-                    </div>
+@endforeach
+ </div>
                 </div>
             </div>
         </section>

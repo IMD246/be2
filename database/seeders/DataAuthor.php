@@ -30,7 +30,7 @@ class DataAuthor extends Seeder
                 'publishedBooks' => 10,
                 'nameAuthor' => "CamBridge",
                 'Description' => "Byone sinh nam 1950 nguoi nuoc anh",
-                'image' => "imag-25.jpg",
+                'image' => "imag-21.jpg",
                 'facebook' => "#",
                 'Twitter' => "#",
             ]);

@@ -9,11 +9,11 @@ use App\Models\Book;
 class Category extends Model
 {
     use HasFactory;
-   
+
     protected $table = 'category';
 
-    public function category()
+    public function book()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Book::class,"idCategory","id");
     }
 }

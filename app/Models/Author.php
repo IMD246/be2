@@ -11,7 +11,7 @@ class Author extends Model
 
     protected $table = 'author';
 
-    public function author()
+    public function book()
     {
         return $this->hasMany(Book::class);
     }
