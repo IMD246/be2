@@ -36,6 +36,14 @@ class bookController extends Controller
         ->with(compact('categories'))
         ->with(compact('authors'));
     }
+    // search
+    public function search(Request $request)
+    {
+        $book = new Book;
+        $dataBook = $book->where('nameBook','like','%'.$request->nameBook.'%')->get();
+        return view('manage.searchBook')
+        ->with(compact('dataBook'));
+    }
 
     /**
      * Store a newly created resource in storage.

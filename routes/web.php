@@ -6,8 +6,9 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\lacontrol;
 use App\Http\Controllers\bookController;
+use App\Http\Controllers\authorController;
+use App\Http\Controllers\categoryController;
 use App\Http\Controllers\TemplateController;
-
 use App\Http\Controllers\UserAuth;
 
 /*
@@ -76,8 +77,9 @@ Route::resource('book','bookController');
 Route::resource('author','authorController');
 Route::resource('category','categoryController');
 Route::resource('template','templateController');
-
-
+Route::post('book/search',[bookController::class,'search']);
+Route::post('author/search',[authorController::class,'search']);
+Route::post('category/search',[categoryController::class,'search']);
 //Send email form user to admin
 Route::get('/email', 'EmailController@create');
 Route::post('/email', 'EmailController@sendEmail')->name('send.email');

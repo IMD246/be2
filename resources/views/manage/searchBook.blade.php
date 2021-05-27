@@ -13,37 +13,29 @@
         <!-- Xuất thông báo -->    
         <div class="row">
             <div class="col-6">
-                <h1>Manage Category</h1>
+                <h1>Result of Search Book</h1>
             </div>      
         </div>       
         <table class="table">
             <thead>
                 <td>ID</td>
-                <td>Category Name</td>
-                {{-- create --}}               
-            </thead>  
-            <form action='{{ route('category.create') }}' method="GET">
-                <button type="submit" class="btn btn-success"  style="margin-left: 70%">Thêm Category Mới</button>
-            </form>
-            {{-- Search --}}
-            <form class="form-inline my-2 my-lg-0" action='{{url('category/search')}}' method="POST">
-                @csrf
-                <input type="text" placeholder="Search" name="nameCategory">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>                     
-            @foreach ($data as $item)
+                <td style="width: 50px;">Book Photo</td>
+                <td>Book Name</td>
+                <td>Chức năng</td>
+            </thead>                  
+            @foreach ($dataBook as $item)
             <tr>               
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->nameCategory}}</td>
+                <td>{{ $item->idBook }}</td>
+                <td><img src="{{url('images/books')}}/{{$item->image}}" class="img-fluid" alt="..."></td>
+                <td>{{ $item->nameBook }}</td>
                 <td>                   
-                    {{-- update --}}
-                    
-                    <form action='{{route('category.edit',$item->id)}}' method="GET">
+                    {{-- update --}}                  
+                    <form action='{{route('book.edit',$item->idBook)}}' method="GET">
                         <button type="submit" class="btn btn-danger">Update </button>
                     </form>   
 
                     {{-- delete --}}
-                    <form action="{{route('category.destroy',$item->id)}}" method="POST">
+                    <form action="{{route('book.destroy',$item->idBook)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">DELETE</button>

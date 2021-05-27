@@ -25,7 +25,13 @@
             </thead>  
             <form action='{{ route('author.create') }}' method="GET">
                 <button type="submit" class="btn btn-success"  style="margin-left: 70%">Thêm Author Mới</button>
-            </form>                   
+            </form>
+             {{-- Search --}}
+             <form class="form-inline my-2 my-lg-0" action='{{url('author/search')}}' method="POST">
+                @csrf
+                <input type="text" placeholder="Search" name="nameAuthor">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>                    
             @foreach ($data as $item)
             <tr>               
                 <td>{{ $item->id }}</td>

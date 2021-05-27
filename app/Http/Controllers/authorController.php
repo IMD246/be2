@@ -82,6 +82,14 @@ class authorController extends Controller
         return view('manage.updateAuthor')
         ->with(compact('author'));
     }
+    // search
+    public function search(Request $request)
+    {
+        $author = new Author;
+        $data = $author->where('nameAuthor','like','%'.$request->nameAuthor.'%')->get();
+        return view('manage.searchAuthor')
+        ->with(compact('data'));
+    }
 
     /**
      * Update the specified resource in storage.

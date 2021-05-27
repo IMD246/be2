@@ -46,6 +46,14 @@ class categoryController extends Controller
         $category->save();
         return redirect()->route('category.create')->with('msg','them thanh cong');
     }
+    // search
+    public function search(Request $request)
+    {
+        $category = new Category;
+        $data = $category->where('nameCategory','like','%'.$request->nameCategory.'%')->get();
+        return view('manage.searchCategory')
+        ->with(compact('data'));
+    }
 
     /**
      * Display the specified resource.

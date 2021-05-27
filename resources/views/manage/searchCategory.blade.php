@@ -13,7 +13,7 @@
         <!-- Xuất thông báo -->    
         <div class="row">
             <div class="col-6">
-                <h1>Manage Category</h1>
+                <h1>Result of search Category</h1>
             </div>      
         </div>       
         <table class="table">
@@ -21,16 +21,7 @@
                 <td>ID</td>
                 <td>Category Name</td>
                 {{-- create --}}               
-            </thead>  
-            <form action='{{ route('category.create') }}' method="GET">
-                <button type="submit" class="btn btn-success"  style="margin-left: 70%">Thêm Category Mới</button>
-            </form>
-            {{-- Search --}}
-            <form class="form-inline my-2 my-lg-0" action='{{url('category/search')}}' method="POST">
-                @csrf
-                <input type="text" placeholder="Search" name="nameCategory">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>                     
+            </thead>                      
             @foreach ($data as $item)
             <tr>               
                 <td>{{ $item->id }}</td>

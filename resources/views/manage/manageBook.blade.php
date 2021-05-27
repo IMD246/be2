@@ -26,6 +26,12 @@
             {{-- create --}}
             <form action='{{ route('book.create') }}' method="GET">
                 <button type="submit" class="btn btn-success" style="margin-left: 80%">Thêm Book Mới</button>
+            </form>       
+            {{-- Search --}}
+            <form class="form-inline my-2 my-lg-0" action='{{url('book/search')}}' method="POST">
+                @csrf
+                <input type="text" placeholder="Search" name="nameBook">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>  
             @foreach ($databook as $item)
             <tr>
