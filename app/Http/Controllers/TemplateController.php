@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\rating;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class TemplateController extends Controller
@@ -39,11 +40,17 @@ class TemplateController extends Controller
 
 
     public function r404error(){
-        $allcategory=Category::all();
-        $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
+
         //return
 
-        return view ('template.404error')->with(compact('allcategory')) ->with(compact('top3Author'));
+        return view ('template.404error');
+    }
+    public function r405footer(){
+
+        //return
+
+        return view ('template.405footer');
+
     }
     public function aboutus(){
         $allcategory=Category::all();
@@ -66,6 +73,7 @@ class TemplateController extends Controller
 
         return view('template.authors')->with(compact('allAuthor'))->with(compact('bookOfAuthor'))->with(compact('category'))->with(compact('allcategory')) ->with(compact('top3Author'));
     }
+    //authordetail
     public function authordetail(){
         $temp= new Author;
         $book=new Book;
@@ -122,13 +130,6 @@ class TemplateController extends Controller
 
         return view ('template.handleCart')->with(compact('category'))->with(compact('allcategory')) ->with(compact('top3Author'));
     }
-    public function new_book(){
-        $allcategory=Category::all();
-        $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
-        //return
-
-        return view ('template.new_book') ->with(compact('top3Author'));
-    }
 
 
     //KHI NAO MA USER RATE LAN DAU THI VAO STORE BANG LENH FINDORFAIL
@@ -150,5 +151,16 @@ class TemplateController extends Controller
         else{
             return redirect()->route('template.index');
         }
+    }
+    //Search
+    public function new_book(Request $request){
+        $allcategory=Category::all();
+        $category= new Category;
+        $search = $request->input('search');
+        $temp= new Author;
+        $data= DB::table('book')->where('nameBook','like','%'.$search.'%')->get();
+        $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
+
+        return view ('template.search')->with(compact('category'))->with(compact('allcategory'))->with(compact('data'))->with(compact('temp'))->with(compact('top3Author'));
     }
 }

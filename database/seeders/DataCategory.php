@@ -16,19 +16,19 @@ class DataCategory extends Seeder
     {
 
             DB::table('Category')->insert([
-                'nameCategory' => 'adventure',
+                'nameCategory' => 'Adventure',
             ]);
             DB::table('Category')->insert([
-                'nameCategory' => 'study',
+                'nameCategory' => 'Study',
             ]);
             DB::table('Category')->insert([
-                'nameCategory' => 'programming',
+                'nameCategory' => 'Programming',
             ]);
             DB::table('Category')->insert([
-                'nameCategory' => 'romance',
+                'nameCategory' => 'Romance',
             ]);
             DB::table('Category')->insert([
-                'nameCategory' => 'comedy',
+                'nameCategory' => 'Comedy',
             ]);
     }
 }

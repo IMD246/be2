@@ -10,6 +10,8 @@ use App\Http\Controllers\authorController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\UserAuth;
+use Illuminate\Auth\AuthenticationException;
+use Laravel\Fortify\Fortify;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,8 @@ Route::get('/index.blade.php',[TemplateController::class,'index']);//
 Route::get('/',[TemplateController::class,'index']);//
 Route::get('/contactus.blade.php',[TemplateController::class,'contactus']);//
 Route::get('/404error.blade.php',[TemplateController::class,'r404error']);//
+Route::get('/405footer.blade.php',[TemplateController::class,'r405footer']);//
+
 Route::get('/aboutus.blade.php',[TemplateController::class,'aboutus']);//
 Route::get('/authors.blade.php',[TemplateController::class,'authors']);//
 Route::get('/authordetail.blade.php',[TemplateController::class,'authordetail']);//
@@ -34,8 +38,7 @@ Route::get('/book_detail.blade.php',[TemplateController::class,'book_detail']);
 Route::get('/cart.blade.php',[TemplateController::class,'cart']);
 Route::get('/category_book.blade.php',[TemplateController::class,'category']);
 Route::get('/handleCart.blade.php',[TemplateController::class,'handleCart']);
-Route::get('/new_book.blade.php',[TemplateController::class,'new_book']);
-Route::get('/SearchingBook.blade.php',[TemplateController::class,'searching_Book']);
+
 Route::post('/book_detail.blade.php?idBook={id}',[TemplateController::class,'updateRate']);
 //Auth
 Route::get('redirects',[TemplateController::class,'getAuth']);
@@ -43,7 +46,7 @@ Route::get('redirects',[TemplateController::class,'getAuth']);
 //book_detail.cart,category,handlecart,newbook
 //Route logout
 // Route::get('/logout', function () {
-//     return Inertia::render('Welcome', [
+//     return Inertia::render('./index.blade.php', [
 //         'canLogin' => Route::has('login'),
 //         'canRegister' => Route::has('register'),
 //         'laravelVersion' => Application::VERSION,
@@ -64,7 +67,7 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/home');
+    return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
@@ -77,9 +80,9 @@ Route::resource('book','bookController');
 Route::resource('author','authorController');
 Route::resource('category','categoryController');
 Route::resource('template','templateController');
-Route::post('book/search',[bookController::class,'search']);
-Route::post('author/search',[authorController::class,'search']);
-Route::post('category/search',[categoryController::class,'search']);
+// Route::post('book/search',[bookController::class,'search']);
+// Route::post('author/search',[authorController::class,'search']);
+// Route::post('category/search',[categoryController::class,'search']);
 //Send email form user to admin
 Route::get('/email', 'EmailController@create');
 Route::post('/email', 'EmailController@sendEmail')->name('send.email');
@@ -101,3 +104,16 @@ Route::get('/klogout', function(){
     }
     return redirect('getLogin');
 });
+//Authen Login
+// Route::post('/login',[UserAuth::class,'Login']);
+// Route::get('/login', function(){
+//     if(session()->has('user')){
+//       return redirect('cart');
+//     }
+//     return view('login');
+// });
+
+
+//Search
+Route::get('/search',[TemplateController::class,'new_book']);
+

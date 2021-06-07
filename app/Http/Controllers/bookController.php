@@ -41,10 +41,27 @@ class bookController extends Controller
     {
         $book = new Book;
         $dataBook = $book->where('nameBook','like','%'.$request->nameBook.'%')->get();
+
         return view('manage.searchBook')
         ->with(compact('dataBook'));
     }
+    public function footersearch(){
+        $data = Book::all();
+        $data1 = Book::orderBy('rate','desc')->limit(3)->get();
+        $bookList = Book::orderBy('rate','desc')->limit(5)->get();
+        $temp1= new Category;
+        $temp= new Author;
+        $featureArrayBook=Book::orderBy('Rate','desc')->limit(4)->get();
+        $allcategory=Category::all();
+        $threenewstbook = Book::orderBy('created_at','desc')->limit(3)->get();
+        $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
+        //return
 
+        return view ('template.405footer')->with(compact('data'))->with(compact('data1'))
+        ->with(compact('allcategory'))->with(compact('temp1'))->with(compact('temp'))
+        ->with(compact('threenewstbook')) ->with(compact('featureArrayBook')) ->with(compact('top3Author'))->with(compact('bookList'));
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -146,7 +163,7 @@ class bookController extends Controller
             'Description' => $request->bookDes,
             'image' => $imageName
         ]);
-        return redirect()->route('book.index')->with('msg','Update Thanh cong');            
+        return redirect()->route('book.index')->with('msg','Update Thanh cong');
     }
 
     /**

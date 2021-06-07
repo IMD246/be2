@@ -51,10 +51,41 @@ class DataAuthor extends Seeder
                 'Twitter' => "#",
             ]);
             DB::table('Author')->insert([
+                'id' => "5",
                 'publishedBooks' => "",
-                'nameAuthor' => "Jim Smith",
+                'nameAuthor' => "Miguel de Cervantes",
                 'Description' => "",
-                'image' => "imag-24.jpg",
+                'image' => "mi.jpg",
+                'facebook' => "#",
+                'Twitter' => "#",
+            ]);
+            //Author for 1o for 5 books
+            DB::table('Author')->insert([
+                'id' => "10",
+                'publishedBooks' => "14",
+                'nameAuthor' => " Nicola Yoon",
+                'Description' => "Yoon worked as a programmer for investment management firms for 20 years before the publication of her first book.[4] She was inspired to write her debut novel, Everything, Everything, after the birth of her biracial daughter. Yoon wanted to write a book that reflected her child on the pages.[3][5] Her first-time mother worries about protecting her baby from danger gave her the idea to write a story about a 17-year-old girl who needed the same level of protection.[6][7] It took Yoon three years to write the book, writing early in the mornings while working full-time and raising her infant daughter.[3][6] Her husband, Korean American graphic designer David Yoon, drew the illustrations.",
+                'image' => "ni.jpg",
+                'facebook' => "#",
+                'Twitter' => "#",
+            ]);
+            // authorJack London
+            DB::table('Author')->insert([
+                'id' => "11",
+                'publishedBooks' => "23",
+                'nameAuthor' => "Jack London",
+                'Description' => "John Griffith London (born John Griffith Chaney;[1] January 12, 1876 – November 22, 1916)[2][3][4][5] was an American novelist, journalist, and social activist. A pioneer of commercial fiction and American magazines, he was one of the first American authors to become an international celebrity and earn a large fortune from writing.[citation needed] He was also an innovator in the genre that would later become known as science fiction.[6]",
+                'image' => "jack.jpeg",
+                'facebook' => "#",
+                'Twitter' => "#",
+            ]);
+            // ken
+            DB::table('Author')->insert([
+                'id' => "12",
+                'publishedBooks' => "45",
+                'nameAuthor' => "Jack London",
+                'Description' => "Kenneth Elton Kesey (September 17, 1935 – November 10, 2001) was an American novelist, essayist, and countercultural figure. He considered himself a link between the Beat Generation of the 1950s and the hippies of the 1960s.",
+                'image' => "ken.jpg",
                 'facebook' => "#",
                 'Twitter' => "#",
             ]);
