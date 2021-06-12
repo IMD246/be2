@@ -44,7 +44,8 @@ class categoryController extends Controller
         $category = new Category;
         $category->nameCategory = $request->nameCategory;        
         $category->save();
-        return redirect()->route('category.create')->with('msg','them thanh cong');
+        session()->flash('success', 'Add Success!!!');  
+        return redirect()->route('category.create');
     }
     // search
     public function search(Request $request)
@@ -93,7 +94,8 @@ class categoryController extends Controller
         $category->where('id',$id)->update([            
             'nameCategory' => $request->nameCategory,            
         ]);       
-        return redirect()->route('category.index')->with('msg','Update Thanh cong');
+        session()->flash('success', 'Update Success!!!');  
+        return redirect()->route('category.index');
     }
 
     /**
@@ -113,6 +115,7 @@ class categoryController extends Controller
         {
            $book1->where('idCategory',$id)->delete();
         }
-        return redirect()->route('category.index')->with('msg','xoa thanh cong');
+        session()->flash('success', 'Delete Success!!!');  
+        return redirect()->route('category.index');
     }
 }

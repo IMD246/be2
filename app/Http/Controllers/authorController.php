@@ -15,7 +15,8 @@ class authorController extends Controller
     public function index()
     {
         $author = new Author;
-        $data = $author->all();
+        // $data = $author->all();
+        $data = $author->paginate(6);
         return view('manage.manageAuthor')->with(compact('data'));
     }
 
@@ -55,7 +56,8 @@ class authorController extends Controller
         $request->authorPhoto->move(public_path('images').'/author', $imageName);
         $author->image = $imageName;
         $author->save();
-        return redirect()->route('author.create')->with('msg','them thanh cong');
+        session()->flash('success', 'add Success!!!');  
+        return redirect()->route('author.create');
     }
 
     /**
@@ -116,7 +118,8 @@ class authorController extends Controller
             'facebook' => $request->facebook,
             'Twitter' => $request->twitter                         
         ]);       
-        return redirect()->route('author.index')->with('msg','Update Thanh cong');
+        session()->flash('success', 'Update Success!!!');  
+        return redirect()->route('author.index');
     }
 
     /**
@@ -136,6 +139,7 @@ class authorController extends Controller
         {
            $book1->where('idAuthor',$id)->delete();
         }
-        return redirect()->route('author.index')->with('msg','Xoa thanh cong');
+        session()->flash('success', 'Delete Success!!!');  
+        return redirect()->route('author.index');
     }
 }

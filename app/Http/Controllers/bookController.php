@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Author;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class bookController extends Controller
 {
@@ -17,7 +18,8 @@ class bookController extends Controller
     public function index()
     {
         $Book = new Book;
-        $databook = $Book->all();
+        // $databook = $Book->all();
+        $databook = $Book->paginate(10);
         return view('manage.manageBook')->with(compact('databook'));
     }
 
@@ -91,8 +93,8 @@ class bookController extends Controller
         $request->bookPhoto->move(public_path('images').'/books', $imageName);
         $book->image = $imageName;
         $book->save();
-
-        return redirect()->route('book.create')->with('msg','them thanh cong');
+        session()->flash('success', 'add Success!!!');  
+        return redirect()->route('book.create');
     }
 
     /**
@@ -163,7 +165,8 @@ class bookController extends Controller
             'Description' => $request->bookDes,
             'image' => $imageName
         ]);
-        return redirect()->route('book.index')->with('msg','Update Thanh cong');
+        session()->flash('success', 'Update Success!!!');  
+        return redirect()->route('book.index');
     }
 
     /**
@@ -176,6 +179,7 @@ class bookController extends Controller
     {
          $book = new Book;
          $book->where('idBook',$id)->delete();
-         return redirect()->route('book.index')->with('success',"Delete successful!");
+         session()->flash('success', 'Delete Success!!!');  
+         return redirect()->route('book.index');
     }
 }

@@ -69,6 +69,9 @@ Route::resource('book','bookController');
 Route::resource('author','authorController');
 Route::resource('category','categoryController');
 Route::resource('template','templateController');
+Route::post('book/search',[bookController::class,'search']);
+Route::post('author/search',[authorController::class,'search']);
+Route::post('category/search',[categoryController::class,'search']);
 //Send email form user to admin
 Route::get('/email', 'EmailController@create');
 Route::post('/email', 'EmailController@sendEmail')->name('send.email');
@@ -102,6 +105,11 @@ Route::get('/checkout',[cartController::class,'checkout']);
 Route::get('/historycart',[cartController::class,'historycart']);
 //History detail
 Route::get('/historydetail{id}',[cartController::class,'historydetail']);
+//profile
+Route::get('/profile{id}',[TemplateController::class,'profileUser']);
+Route::post('/edit',[TemplateController::class,'updateProfile']);
+//logout
+Route::get('/logout',[TemplateController::class,'logoutUser']);
 
 
 

@@ -2,9 +2,10 @@
 $user = auth()->user();
 if (isset($user)) {
 } else {
-    return redirect()->to('./')->send();
+    return redirect()->to('./')->send()->with('error', 'You must login to using cart');
 }
 ?>
+
 
 <!doctype html>
 <html class="no-js" lang="zxx">

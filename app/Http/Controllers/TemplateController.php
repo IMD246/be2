@@ -7,6 +7,9 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\rating;
+use App\Models\User;
+use Exception;
+use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -130,7 +133,7 @@ class TemplateController extends Controller
     public function getAuth(){
         $role=Auth::user()->role;
         if($role=='1'){
-            return view('book');
+            return redirect()->route('book.index');
         }
         else{
             return redirect()->route('template.index');
@@ -147,5 +150,37 @@ class TemplateController extends Controller
         $data= DB::table('book')->where('nameBook','like','%'.$search.'%')->paginate(5);
         $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
         return view ('template.search')->with(compact('book'))->with(compact('allcategory'))->with(compact('data'))->with(compact('temp'))->with(compact('top3Author'));
+    }
+    //logout
+    public function logoutUser(){
+        Auth::logout();
+        return redirect()->route('template.index');
+    }
+     //profile
+     public function profileUser($id){
+        $category= new Category;
+        $allcategory=Category::all();
+        $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
+        $data = User::find($id);
+        //return
+        return view ('template.profile')->with(compact('category'))->with(compact('allcategory')) ->with(compact('top3Author'))->with(compact('data'));
+    }
+    public function updateProfile(Request $req){
+        $category= new Category;
+        $allcategory=Category::all();
+        $top3Author=Author::orderBy('publishedBooks','desc')->limit(3)->get();
+        $data = User::find($req->id);
+        $data->name=$req->name;
+        $data->email=$req->email;
+        $data->phone=$req->phone;
+        $data->address=$req->address;
+        try{
+            $data->save();
+            return back()->with('success', 'You updated infomation successfull');
+           
+        }catch(Exception $exception){
+            return back()->with('error', 'Phone number already exists');
+        }
+       
     }
 }

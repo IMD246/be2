@@ -1,6 +1,15 @@
 @section('head')
 <?php
 $user = auth()->user();
+if (isset($user)) {
+    $role = $user->role;
+    $id = $user->id;
+    if ($role == 1) {
+        return redirect()->to('./book')->send();
+    }
+}
+
+
 ?>
 
 <div class="tg-middlecontainer">
@@ -32,8 +41,9 @@ $user = auth()->user();
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="{{url('/profile')}}">  Profile</a><br>
-                                <a class="dropdown-item" href="{{url('/historycart')}}">  History cart</a>
+                                <a class="dropdown-item" href="{{url('/profile')}}{{$id}}"> Profile</a><br>
+                                <a class="dropdown-item" href="{{url('/historycart')}}"> History cart</a> <br>
+                                <a class="dropdown-item" href="{{url('/logout')}}"> Logout</a>
                             </div>
                         </div>
                         <a href="{{url('/profile')}}"><img width="50px" height="50px" src="./images/books/git.png" alt="image description"></a>
@@ -42,9 +52,18 @@ $user = auth()->user();
 
                     } else {
                     ?>
-                        <a href="{{url('/login')}}"><img width="50px" height="50px" src="./images/books/git.png" alt="image description"></a>
+                        <select name="formal" onchange="javascript:handleSelect(this)">
+                            <option value="./">Hello</option>
+                            <option value="login">Login</option>
+                            <option value="register">Register</option>
+                        </select>
+
+                        <script type="text/javascript">
+                            function handleSelect(elm) {
+                                window.location = elm.value;
+                            }
+                        </script>
                     <?php
-                        echo 'Login';
                     }
                     ?>
 

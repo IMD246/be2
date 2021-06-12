@@ -1,4 +1,15 @@
 
+<?php
+$user = auth()->user();
+if (isset($user)) {
+    $role = $user->role;
+    if ($role == 0) {
+        return redirect()->to('./')->send();
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +19,56 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
+<div class="tg-middlecontainer">
     <div class="container">
-        <!-- Form thêm sản phẩm -->
-        <h1>CREATE A Book</h1>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-md-10"> <strong class="tg-logo"><a href="index.blade.php"><img src="../images/logo.png" alt="company name here"></a></strong></div>
+                    <div class="col-md-2">
+                        <?php
+                        if (isset($user)) { ?>
+                            <a href="./dashboard"><img width="50px" height="50px" src="../images/books/git.png" alt="image description"></a>
+
+                        <?php
+
+                        } else {
+                        ?>
+                            <a href="{{url('/login')}}"><img width="50px" height="50px" src="../images/books/git.png" alt="image description"></a>
+                        <?php
+                            echo 'Login';
+                        }
+                        ?>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+    <div class="container" style="margin-top: 30px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="../book">Books</a>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../author">Authors</a>
+                    </li>
+                    <li class="nav-item  active">
+                        <a class="nav-link" href="../category">Category</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
         <form action="{{route('book.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
