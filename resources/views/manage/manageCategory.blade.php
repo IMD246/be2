@@ -37,14 +37,15 @@
                 </form>
             </div>
         </nav>  
-        <table class="table">
+      <div class="set" style="margin-top: 16px;">
+      <table class="table">
             <thead>
                 <td>ID</td>
                 <td>Category Name</td>
                 {{-- create --}}               
             </thead>  
             <form action='{{ route('category.create') }}' method="GET">
-                <button type="submit" class="btn btn-success"  style="margin-left: 70%">Thêm Category Mới</button>
+                <button type="submit" class="btn btn-success"  style="margin-left: 70%">New category</button>
             </form>
                     
             @foreach ($data as $item)
@@ -68,6 +69,7 @@
             </tr>
             @endforeach           
         </table>    
+      </div>
     </div>
 </body>
 </html>

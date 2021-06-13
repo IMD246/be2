@@ -30,7 +30,7 @@
                     {{-- update --}}
                     
                     <form action='{{route('category.edit',$item->id)}}' method="GET">
-                        <button type="submit" class="btn btn-danger">Update </button>
+                        <button type="submit" class="btn btn-info">Update </button>
                     </form>   
 
                     {{-- delete --}}

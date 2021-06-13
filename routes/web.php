@@ -11,6 +11,7 @@ use App\Http\Controllers\cartController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\UserAuth;
+use App\Http\Controllers\UserController;
 use Illuminate\Auth\AuthenticationException;
 use Laravel\Fortify\Fortify;
 
@@ -77,11 +78,6 @@ Route::get('/email', 'EmailController@create');
 Route::post('/email', 'EmailController@sendEmail')->name('send.email');
 //new sesstion
 
-//////////////////////test
-
-
-
-
 
 //Search
 Route::get('/search',[TemplateController::class,'new_book']);
@@ -110,6 +106,13 @@ Route::get('/profile{id}',[TemplateController::class,'profileUser']);
 Route::post('/edit',[TemplateController::class,'updateProfile']);
 //logout
 Route::get('/logout',[TemplateController::class,'logoutUser']);
+
+//ManageUser
+Route::get('/manageusers',[UserController::class,'index']);
+Route::get('/getuser/{id}',[UserController::class,'getUser']);
+Route::post('/updateuser',[UserController::class,'updateUser']);
+Route::get('/deleteuser/{id}',[UserController::class,'deleteUser']);
+
 
 
 

@@ -38,7 +38,8 @@
             </div>
         </nav>
 
-        <table class="table">
+       <div class="set" style="margin-top: 20px;">
+       <table class="table">
             <thead>
                 <td>ID</td>
                 <td style="width: 50px;">Book Photo</td>
@@ -47,7 +48,7 @@
             </thead>
             {{-- create --}}
             <form action='{{ route('book.create') }}' method="GET">
-                <button type="submit" class="btn btn-success" style="margin-left: 80%">Thêm Book Mới</button>
+                <button type="submit" class="btn btn-success" style="margin-left: 80%">New book</button>
             </form>        
             @foreach ($databook as $item)
             <tr>
@@ -72,6 +73,7 @@
             </tr>
             @endforeach
         </table>
+       </div>
         <span>{{$databook->links('pagination::bootstrap-4')}}</span>
     </div>
 </body>

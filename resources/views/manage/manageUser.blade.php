@@ -11,12 +11,8 @@
 <body>
     @include('manage.headerManage')
     <div class="container" style="margin-top: 30px">
+    @include('flash-message')
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            @if(session()->has('success'))
-            <div class="alert alert-success">
-                {{session()->get('success') }}
-            </div>
-            @endif
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,42 +35,37 @@
             </div>
         </nav>
 
-         <div class="set" style="margin-top: 15px;">
-         <table class="table">
-            <thead>
-                <td>ID</td>
-                <td style="width: 50px;">Author Photo</td>
-                <td>Author Name</td>
-                {{-- create --}}
-            </thead>
-            <form action='{{ route('author.create') }}' method="GET">
-                <button type="submit" class="btn btn-success" style="margin-left: 70%">New author</button>
-            </form>
+        <div class="set" style="margin-top: 15px;">
+            <table class="table">
+                <thead>
+                    <td>ID</td>
+                    <td style="width: 50px;">Name</td>
+                    <td>Email</td>
+                    <td style="width: 50px;">Phone</td>
+                    <td>Address</td>
+                    {{-- create --}}
+                </thead>
 
-            @foreach ($data as $item)
-            <tr>
-                <td>{{ $item->id }}</td>
-                <td><img src="{{url('images/author')}}/{{$item->image}}" class="img-fluid" alt="..."></td>
-                <td>{{ $item->nameAuthor}}</td>
-                <td>
-                    {{-- update --}}
 
-                    <form action='{{route('author.edit',$item->id)}}' method="GET">
-                        <button type="submit" class="btn btn-info">Update </button>
-                    </form>
+                @foreach ($users as $item)
+                <tr>
+                    <td>{{ $item->id}}</td>
+                    <td>{{$item->name}}</td>
+                    <td>{{ $item->email}}</td>
+                    <td>{{$item->phone}}</td>
+                    <td>{{ $item->address}}</td>
+                    <td>
+                        {{-- update --}}
 
-                    {{-- delete --}}
-                    <form action="{{route('author.destroy',$item->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">DELETE</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </table>
-         </div>
-        <span>{{$data->links('pagination::bootstrap-4')}}</span>
+                        <a href="{{url('/getuser')}}/{{$item->id}}" class="btn btn-info">Update</a>
+                        {{-- delete --}}
+                        <a href="{{url('/deleteuser')}}/{{$item->id}}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                @endforeach
+            </table>
+        </div>
+        <span>{{$users->links('pagination::bootstrap-4')}}</span>
     </div>
 </body>
 

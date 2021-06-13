@@ -68,13 +68,6 @@ if (isset($user)) {
                     ?>
 
                 </div>
-                <!-- <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                        <i class="fa fa-sign-out"></i>{{ __('Logout') }}
-                    </x-jet-dropdown-link>
-                </form> -->
-                <!-- When logout -->
             </div>
         </div>
     </div>
