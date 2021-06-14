@@ -163,7 +163,7 @@
                                                                         </h3>
                                                                     </div>
                                                                     <span class="tg-bookwriter">By: <a
-                                                                            href="./authordetail.blade.php?id={{ $key->idAuthor }}">{{ $temp->where('id', '=', $key->idAuthor)->first()->nameAuthor }}</a></span>
+                                                                            href="./authordetail.blade.php?id={{ $key->idAuthor }}">{{ $key->nameAuthor }}</a></span>
                                                                       @for($x = 5; $x > 0; $x--)
                                                                              @php
                                                                          if($key->rate > 0.5){

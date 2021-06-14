@@ -17,18 +17,29 @@ class TemplateController extends Controller
 {
     public function index()
     {
-        $data = Book::all();
+        $data = DB::table('book')
+        ->join('author', 'book.idAuthor', '=', 'author.id')
+        ->select('book.*', 'author.nameAuthor')
+        ->get();
         $data1 = Book::orderBy('rate', 'desc')->limit(3)->get();
-        $bookList = Book::orderBy('rate', 'desc')->limit(5)->get();
-
+        $bookList = DB::table('book')
+        ->orderBy('rate', 'desc')
+        ->join('author', 'book.idAuthor', '=', 'author.id')
+        ->select('book.*', 'author.nameAuthor')
+        ->limit(5)
+        ->get();
         $temp1 = new Category;
         $temp = new Author;
-        $featureArrayBook = Book::orderBy('Rate', 'desc')->limit(4)->get();
+        $featureArrayBook = DB::table('book')
+        ->orderBy('rate', 'desc')
+        ->join('author', 'book.idAuthor', '=', 'author.id')
+        ->select('book.*', 'author.nameAuthor')
+        ->limit(4)
+        ->get();
         $allcategory = Category::all();
         $threenewstbook = Book::orderBy('created_at', 'desc')->limit(3)->get();
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
         //return
-
         return view('template.index')->with(compact('data'))->with(compact('data1'))
             ->with(compact('allcategory'))->with(compact('temp1'))->with(compact('temp'))
             ->with(compact('threenewstbook'))->with(compact('featureArrayBook'))->with(compact('top3Author'))->with(compact('bookList'));
@@ -114,7 +125,11 @@ class TemplateController extends Controller
         $book = new Book;
         $temp1 = new Category;
         $allcategory = $temp1->all();
-        $allBook = Book::paginate(5);
+        $allBook = DB::table('book')
+        ->orderBy('rate', 'desc')
+        ->join('author', 'book.idAuthor', '=', 'author.id')
+        ->select('book.*', 'author.nameAuthor')
+        ->paginate(5);
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
         //return
 

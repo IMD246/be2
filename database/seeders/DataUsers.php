@@ -19,15 +19,98 @@ class DataUsers extends Seeder
                 'id' => "1",
                 'name'=> "Nguyễn Hồng Lợi",
                 'role' => 0,
-                'email'=> 'hongloi12123@gmail.com',
+                'email'=> 'hongloi@gmail.com',
                 'email_verified_at' => '2021-05-22 14:52:21',
-                'phone' => '0568442815',
-                'password' => '123123123',
+                'phone' => '0568124428152',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
                 'address' => 'Linh trung, Thủ đức',
                 'updated_at' => '2021-05-22 14:52:21',
                 'created_at' => '2021-05-22 14:52:21',
             ]);
-          
+            DB::table('users')->insert([
+                'id' => "2",
+                'name'=> "Nguyễn Truong Sinh",
+                'role' => 0,
+                'email'=> 'truongsinh@gmail.com',
+                'email_verified_at' => '2021-05-22 14:52:21',
+                'phone' => '056844228135',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                'address' => 'Linh trung, Thủ đức',
+                'updated_at' => '2021-05-22 14:52:21',
+                'created_at' => '2021-05-22 14:52:21',
+            ]);
+            DB::table('users')->insert([
+                'id' => "3",
+                'name'=> "Nguyễn Thanh Duy",
+                'role' => 0,
+                'email'=> 'thanhduy@gmail.com',
+                'email_verified_at' => '2021-05-22 14:52:21',
+                'phone' => '05684813352',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                'address' => 'Linh hủ đức',
+                'updated_at' => '2021-05-22 14:52:21',
+                'created_at' => '2021-05-22 14:52:21',
+            ]);
+            DB::table('users')->insert([
+                'id' => "4",
+                'name'=> "Nguyễn Trung Nghia",
+                'role' => 0,
+                'email'=> 'trungnghia@gmail.com',
+                'email_verified_at' => '2021-05-22 14:52:21',
+                'phone' => '05684462625',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                'address' => 'Linh trung, Thủ đức',
+                'updated_at' => '2021-05-22 14:52:21',
+                'created_at' => '2021-06-22 14:52:21',
+            ]);
+            DB::table('users')->insert([
+                'id' => "5",
+                'name'=> "Nguyễn Quang Lam",
+                'role' => 0,
+                'email'=> 'quanglam@gmail.com',
+                'email_verified_at' => '2021-05-22 14:52:21',
+                'phone' => '058153453452',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                'address' => 'Linh trung, Thủ đức',
+                'updated_at' => '2021-05-22 14:52:21',
+                'created_at' => '2021-05-22 14:52:21',
+            ]);
+            DB::table('users')->insert([
+                'id' => "6",
+                'name'=> "Nguyễn Van V",
+                'role' => 0,
+                'email'=> 'vanv@gmail.com',
+                'email_verified_at' => '2021-05-22 14:52:21',
+                'phone' => '05688428135',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                'address' => 'Linh trung, Thủ đức',
+                'updated_at' => '2021-05-22 14:52:21',
+                'created_at' => '2021-05-22 14:52:21',
+            ]);
+            DB::table('users')->insert([
+                'id' => "7",
+                'name'=> "user",
+                'role' => 0,
+                'email'=> 'user@gmail.com',
+                'email_verified_at' => '2021-05-22 14:52:21',
+                'phone' => '042815223123',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                'address' => 'Linh trung, Thủ đức',
+                'updated_at' => '2021-05-22 14:52:21',
+                'created_at' => '2021-05-22 14:52:21',
+            ]);
+            DB::table('users')->insert([
+                'id' => "8",
+                'name'=> "admin",
+                'role' => 1,
+                'email'=> 'admin@gmail.com',
+                'email_verified_at' => '2021-05-22 14:52:21',
+                'phone' => '04518325',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                'address' => 'Linh trung, Thủ đức',
+                'updated_at' => '2021-05-22 14:52:21',
+                'created_at' => '2021-05-22 14:52:21',
+            ]);
 
         }
 

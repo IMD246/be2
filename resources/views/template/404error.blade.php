@@ -21,7 +21,7 @@ if (isset($user)) {
                 <div class="tg-searchbox">
                     <form class="tg-formtheme tg-formsearch" method="GET" action="search">
                         <fieldset>
-                            <input type="text" name="search" class="typeahead form-control" placeholder="Search by title book">
+                            <input type="text" name="search" class="typeahead form-control" placeholder="Search by title book, author,...">
                             <button type="submit"><i class="icon-magnifier"></i></button>
                         </fieldset>
 

@@ -61,7 +61,7 @@ $user = auth()->user();
                                 <div class="tg-postbook">
                                     <figure class="tg-featureimg">
                                         <div class="tg-bookimg">
-                                            <a href="./book_detail.blade.php?idBook={{ $book->idBook }}">
+                                            <a href="./book_detail.blade.php?idBook={{$book->idBook}}">
                                                 <div class="tg-frontcover"><img src="{{url('images/books')}}/{{ $book->image }}" alt="image description"></div>
                                             </a>
                                         </div>
@@ -77,7 +77,7 @@ $user = auth()->user();
                                             <h3><a href="./book_detail.blade.php?idBook={{ $book->idBook }}">{{ $book->nameBook }}</a>
                                             </h3>
                                         </div>
-                                        <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $book->idAuthor }}">{{ $temp::find($book->idAuthor)->nameAuthor }}</a></span>
+                                        <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $book->idAuthor }}">{{ $book->nameAuthor }}</a></span>
                                         @for($x = 5; $x > 0; $x--)
                                         @php
                                         if($book->rate > 0.5){
@@ -159,7 +159,7 @@ $user = auth()->user();
                                                     <h3><a href="./book_detail.blade.php?idBook={{ $book->idBook }}">{{ $book->nameBook }}</a>
                                                     </h3>
                                                 </div>
-                                                <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $book->idAuthor }}">{{ $temp::find($book->idAuthor)->nameAuthor }}</a></span>
+                                                <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $book->idAuthor }}">{{ $book->nameAuthor }}</a></span>
                                                 @for($x = 5; $x > 0; $x--)
                                                 @php
                                                 if($book->rate > 0.5){
@@ -275,7 +275,7 @@ $user = auth()->user();
                                     <div class="tg-booktitle">
                                         <h3><a href="./book_detail.blade.php?idBook={{ $item->idBook }}">{{$item->nameBook}}</a></h3>
                                     </div>
-                                    <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{ $temp->where('id', '=', $item->idAuthor)->first()->nameAuthor }}</a></span>
+                                    <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{ $item->nameAuthor }}</a></span>
                                     <a class="tg-btn tg-btnstyletwo" href="{{url('/cart/add/')}}/{{$item->idBook}}">
                                         <i class="fa fa-shopping-basket"></i>
                                         <em>Add To Basket</em>
@@ -368,7 +368,7 @@ $user = auth()->user();
                                 <div class="tg-posttitle">
                                     <h3><a href="./book_detail.blade.php?idBook={{ $item->idBook }}">{{ $item->nameBook }}</a></h3>
                                 </div>
-                                <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{ $temp->where('id', '=', $item->idAuthor)->first()->nameAuthor }}</a></span>
+                                <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{ $item->nameAuthor }}</a></span>
                                 @for($x = 5; $x > 0; $x--)
                                 @php
                                 if($item->rate > 0.5){
