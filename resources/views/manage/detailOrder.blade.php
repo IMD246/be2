@@ -11,7 +11,7 @@
 <body>
     @include('manage.headerManage')
     <div class="container" style="margin-top: 30px">
-    @include('flash-message')
+        @include('flash-message')
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,45 +27,53 @@
                         <a class="nav-link" href="./category">Category</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action="./searchUser" method="get">
+                <form class="form-inline my-2 my-lg-0" action='{{url('author/search')}}' method="POST">
                     @csrf
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search user" name="nameUser" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" name="nameAuthor" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </nav>
+        <div class="data" style="margin-top: 20px;">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>Orders_id: {{$orders[0]->orders_id}}</h5>
+                    <h5>Email: {{$orders[0]->email}}</h5>
+                    <h5>Name: {{$orders[0]->name}}</h5>
+                    <h5>Phone number: {{$orders[0]->phone}}</h5>
+                </div>
+                <div class="col-md-4">
+                    <h5>Address: {{$orders[0]->address}}</h5>
+                    <h5>Created_at: {{$orders[0]->created_at}}</h5>
+                    <h5>Status: {{$orders[0]->status}}</h5>
+                    <h5>Total: {{$orders[0]->total}}0VND</h5>
+                </div>
 
+            </div>
+
+        </div>
         <div class="set" style="margin-top: 15px;">
             <table class="table">
                 <thead>
-                    <td>ID</td>
-                    <td style="width: 50px;">Name</td>
-                    <td>Email</td>
-                    <td style="width: 50px;">Phone</td>
-                    <td>Address</td>
+                    <td>Preview</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td></td>
                     {{-- create --}}
                 </thead>
 
 
-                @foreach ($users as $item)
+                @foreach ($orders as $item)
                 <tr>
-                    <td>{{ $item->id}}</td>
-                    <td>{{$item->name}}</td>
-                    <td>{{ $item->email}}</td>
-                    <td>{{$item->phone}}</td>
-                    <td>{{ $item->address}}</td>
-                    <td>
-                        {{-- update --}}
-
-                        <a href="{{url('/getuser')}}/{{$item->id}}" class="btn btn-info">Update</a>
-                        {{-- delete --}}
-                        <a href="{{url('/deleteuser')}}/{{$item->id}}" class="btn btn-danger">Delete</a>
-                    </td>
+                    <td><a href="{{route('book.edit',$item->idBook)}}"><img width="60" height="80" src="{{url('images/books')}}/{{$item->image}}" class="img-fluid" alt="..."></a></td>
+                    <td>{{ $item->nameBook}}</td>
+                    <td>{{ $item->price}}.000VND</td>
+                    <td>{{$item->qty}}</td>
                 </tr>
                 @endforeach
             </table>
         </div>
-        <span>{{$users->links('pagination::bootstrap-4')}}</span>
     </div>
 </body>
 

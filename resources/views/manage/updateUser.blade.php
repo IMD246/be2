@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Name user" aria-describedby="helpId" value="{{$users->name}}}" required>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Name user" aria-describedby="helpId" value="{{$users->name}}" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>

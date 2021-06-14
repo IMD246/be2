@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <h1>Update An Author</h1>
+    @include('manage.headerLevel2')
         <form method="POST" action="{{route('author.update',$author->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')

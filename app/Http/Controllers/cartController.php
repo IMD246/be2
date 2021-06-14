@@ -10,6 +10,7 @@ use App\Models\Author;
 use App\Models\orders;
 use App\Models\book_orders;
 use Cart;
+use Exception;
 
 class cartController extends Controller
 {
@@ -81,7 +82,7 @@ class cartController extends Controller
     {
         $user = auth()->user();
         // $order = DB::select('select * from orders where user_id = ?', [$user->id]);
-        $order= DB::table('orders')->where('user_id','like',$user->id)->orderBy('created_at', 'desc')->paginate(5);
+        $order = DB::table('orders')->where('user_id', 'like', $user->id)->orderBy('created_at', 'desc')->paginate(5);
         $count = DB::table('orders')->where('user_id', [$user->id])->count();
         $allcategory = Category::all();
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
@@ -90,11 +91,125 @@ class cartController extends Controller
     //history detail
     public function  historydetail($id)
     {
-        $book=new Book;
+        $book = new Book;
         $dataDetail = DB::select('select  book_orders.id, book_orders.orders_id, book_orders.qty, book_orders.total, book.image, book.price, book.nameBook,book.idBook FROM book_orders, 
         book where book_orders.book_id= book.idBook AND book_orders.orders_id=?', [$id]);
         $allcategory = Category::all();
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
         return view('template.historydetail')->with(compact('allcategory'))->with(compact('top3Author'))->with(compact('dataDetail'))->with(compact('book'));
+    }
+    //Managa carts
+    public function manageCarts()
+    {
+        $orders = DB::table('orders')
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->orderBy('created_at', 'desc')
+            ->select('orders.*', 'orders.user_id', 'users.email')
+            ->paginate(5);
+        return view('manage.manageCart')->with(compact('orders'));
+    }
+    //detail order
+    public function detailOrder($id)
+    {
+        $orders = DB::table('book_orders')
+            ->join('book', 'book_orders.book_id', '=', 'book.idBook')
+            ->join('orders', 'book_orders.orders_id', '=', 'orders.id')
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->where('book_orders.orders_id', $id)
+            ->select(
+                'book_orders.*',
+                'book.image',
+                'book.nameBook',
+                'book.idBook',
+                'book.price',
+                'users.name',
+                'users.address',
+                'users.phone',
+                'users.email',
+                'orders.created_at',
+                'orders.status',
+                'orders.total'
+            )
+            ->get();
+        return view('manage.detailOrder')->with(compact('orders'));
+    }
+    //update status order
+    public function updateorder(Request $req)
+    {
+        $orders = orders::find($req->id);
+        $orders->status = $req->status;
+        try {
+            $orders->save();
+            return back()->with('success', 'You updated status this order successfull');
+        } catch (Exception $exception) {
+            return back()->with('error', 'Phone number already exists');
+        }
+    }
+    //search order id
+    public function searchOrders(Request $request)
+    {
+        $search = $request->input('idCart');
+        $orders = DB::table('orders')
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->orderBy('created_at', 'desc')
+            ->select('orders.*', 'orders.user_id', 'users.email')
+            ->where('orders.id', 'like', $search)
+            ->paginate(5);
+
+        $count = DB::table('orders')->where('id', 'like', $search)->count();
+
+        return view('manage.searchIdOrder')->with(compact('orders'))->with(compact('count'));
+    }
+    //sort 
+    public function sortByPending(Request $request)
+    {
+        $orders = DB::table('orders')
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->orderBy('created_at', 'desc')
+            ->select('orders.*', 'orders.user_id', 'users.email')
+            ->where('orders.status', 'like', 'pending')
+            ->paginate(5);
+
+
+
+        return view('manage.sortByPending')->with(compact('orders'));
+    }
+    public function sortByTrasport(Request $request)
+    {
+        $search = $request->input('idCart');
+        $orders = DB::table('orders')
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->orderBy('created_at', 'desc')
+            ->select('orders.*', 'orders.user_id', 'users.email')
+            ->where('orders.status', 'like', 'Transpoting')
+            ->paginate(5);
+
+        return view('manage.sortByTrasport')->with(compact('orders'));
+    }
+    public function sortByConfirm(Request $request)
+    {
+        $search = $request->input('idCart');
+        $orders = DB::table('orders')
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->orderBy('created_at', 'desc')
+            ->select('orders.*', 'orders.user_id', 'users.email')
+            ->where('orders.status', 'like', 'Confirmed')
+            ->paginate(5);
+
+
+        return view('manage.sortByConfirm')->with(compact('orders'));
+    }
+    public function sortByCancel(Request $request)
+    {
+        $search = $request->input('idCart');
+        $orders = DB::table('orders')
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->orderBy('created_at', 'desc')
+            ->select('orders.*', 'orders.user_id', 'users.email')
+            ->where('orders.status', 'like', 'Canceled')
+            ->paginate(5);
+
+
+        return view('manage.sortByCancel')->with(compact('orders'));
     }
 }

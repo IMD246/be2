@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <h1>Update A Category</h1>
+        @include('manage.headerLevel2')
         <form method="POST" action="{{route('category.update',$category->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')

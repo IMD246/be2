@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <!-- Form thêm sản phẩm -->
-        <h1>Update A Book</h1>
+        @include('manage.headerLevel2')
         <form method="POST" action="{{route('book.update',$oldBook->idBook)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')

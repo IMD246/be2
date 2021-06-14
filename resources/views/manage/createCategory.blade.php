@@ -11,20 +11,22 @@
 <body>
     <div class="container">
         <!-- Form thêm sản phẩm -->
-        <h1>CREATE A Category</h1>
-        <form action="{{route('category.store')}}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="productName">Name Category</label>
-                <input type="text" name="nameCategory" id="nameCategory" class="form-control" placeholder="name Category" aria-describedby="helpId">
-            </div>
-            <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary">Add category</button>
+        @include('manage.headerLevel2')
+        <div class="container">
+            <form action="{{route('category.store')}}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="productName">Name Category</label>
+                    <input type="text" name="nameCategory" id="nameCategory" class="form-control" placeholder="name Category" aria-describedby="helpId">
                 </div>
-            </div>
-        </form>
+                <div class="row">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">Add category</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 

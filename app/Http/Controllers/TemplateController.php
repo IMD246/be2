@@ -160,7 +160,9 @@ class TemplateController extends Controller
         $allcategory = $temp1->all();
         $search = $request->input('search');
         $temp = new Author;
-        $data = DB::table('book')->where('nameBook', 'like', '%' . $search . '%')->paginate(5);
+        $data = DB::table('book')->where('nameBook', 'like', '%' . $search . '%')
+        ->orWhere('Description', 'like','%' . $search . '%')
+        ->paginate(5);
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
         return view('template.search')->with(compact('book'))->with(compact('allcategory'))->with(compact('data'))->with(compact('temp'))->with(compact('top3Author'));
     }
@@ -182,9 +184,6 @@ class TemplateController extends Controller
     }
     public function updateProfile(Request $req)
     {
-        $category = new Category;
-        $allcategory = Category::all();
-        $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
         $data = User::find($req->id);
         $data->name = $req->name;
         $data->email = $req->email;

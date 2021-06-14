@@ -82,9 +82,7 @@ Route::post('/email', 'EmailController@sendEmail')->name('send.email');
 //Search
 Route::get('/search',[TemplateController::class,'new_book']);
 //Cart
-Route::get('/destroy', function(){
-    Cart::destroy();
-});
+
 Route::get('/cart/add/{id}',[cartController::class,'addItem']);
 
 Route::get('/cart.blade.php',[cartController::class,'index']);
@@ -112,6 +110,18 @@ Route::get('/manageusers',[UserController::class,'index']);
 Route::get('/getuser/{id}',[UserController::class,'getUser']);
 Route::post('/updateuser',[UserController::class,'updateUser']);
 Route::get('/deleteuser/{id}',[UserController::class,'deleteUser']);
+Route::get('/searchUser',[UserController::class,'searchUsers']);
+//Manage cart
+Route::get('/managecarts',[cartController::class,'manageCarts']);
+Route::get('/detailorder/{id}',[cartController::class,'detailOrder']);
+Route::post('/updateorder',[cartController::class,'updateorder']);
+Route::get('/searchorder',[cartController::class,'searchOrders']);
+
+//sort in manageCart
+Route::get('/sortByPending',[cartController::class,'sortByPending']);
+Route::get('/sortByTrasport',[cartController::class,'sortByTrasport']);
+Route::get('/sortByConfirm',[cartController::class,'sortByConfirm']);
+Route::get('/sortByCancel',[cartController::class,'sortByCancel']);
 
 
 

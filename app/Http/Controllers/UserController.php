@@ -36,4 +36,15 @@ class UserController extends Controller
         $user = User::find($id)->delete();
         return back()->with('success', 'You deleted this user successfull');
     }
+    //search user
+    public function searchUsers (Request $request)
+    {
+        $search = $request->input('nameUser');
+        $users = DB::table('users')
+        ->where('name', 'like', '%' . $search . '%')
+        ->orWhere('name', 'like', '%' . $search . '%')
+        ->orWhere('phone', 'like', $search )
+        ->paginate(5);
+        return view('manage.searchUser')->with(compact('users'));
+    }
 }

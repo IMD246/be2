@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <!-- Form thêm sản phẩm -->
-        <h1>CREATE A Book</h1>
+        @include('manage.headerLevel2')
         <form action="{{route('author.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
