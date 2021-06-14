@@ -7,7 +7,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
-
+<style>
+    body {
+        background-image: url('./images/books/show.jpg');
+    }
+</style>
 <body>
     @include('manage.headerManage')
     <div class="container" style="margin-top: 30px">
@@ -16,20 +20,26 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             @if(session()->has('success'))
-                <div class="alert alert-success">
-                    {{session()->get('success') }}
-                </div>
-                @endif
+            <div class="alert alert-success">
+                {{session()->get('success') }}
+            </div>
+            @endif
             <a class="navbar-brand" href="./book">Books</a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <ul class="navbar-nav mr-auto mt-6 mt-lg-0">
                     <li class="nav-item active">
                         <a class="nav-link" href="./author">Authors</a>
                     </li>
                     <li class="nav-item  active">
                         <a class="nav-link" href="./category">Category</a>
                     </li>
-                </ul>        
+                    <li class="nav-item  active">
+                        <a class="nav-link" href="./managecarts">Orders</a>
+                    </li>
+                    <li class="nav-item  active">
+                        <a class="nav-link" href="./manageusers">Users</a>
+                    </li>
+                </ul>
                 <form class="form-inline my-2 my-lg-0" action='{{url('book/search')}}' method="POST">
                     @csrf
                     <input class="form-control mr-sm-2" type="search" placeholder="Search book" name="nameBook" placeholder="Search" aria-label="Search">
@@ -38,42 +48,42 @@
             </div>
         </nav>
 
-       <div class="set" style="margin-top: 20px;">
-       <table class="table">
-            <thead>
-                <td>ID</td>
-                <td style="width: 50px;">Book Photo</td>
-                <td>Book Name</td>
-                <td>Chức năng</td>
-            </thead>
-            {{-- create --}}
-            <form action='{{ route('book.create') }}' method="GET">
-                <button type="submit" class="btn btn-success" style="margin-left: 80%">New book</button>
-            </form>        
-            @foreach ($databook as $item)
-            <tr>
+        <div class="set" style="margin-top: 20px;">
+            <table class="table">
+                <thead>
+                    <td>ID</td>
+                    <td style="width: 50px;">Book Photo</td>
+                    <td>Book Name</td>
+                    <td>Chức năng</td>
+                </thead>
+                {{-- create --}}
+                <form action='{{ route('book.create') }}' method="GET">
+                    <button type="submit" class="btn btn-success" style="margin-left: 80%">New book</button>
+                </form>
+                @foreach ($databook as $item)
+                <tr>
 
-                <td>{{ $item->idBook }}</td>
-                <td><img src="{{url('images/books')}}/{{$item->image}}" class="img-fluid" alt="..."></td>
-                <td>{{ $item->nameBook }}</td>
-                <td>
-                    {{-- update --}}
+                    <td>{{ $item->idBook }}</td>
+                    <td><img src="{{url('images/books')}}/{{$item->image}}" class="img-fluid" alt="..."></td>
+                    <td>{{ $item->nameBook }}</td>
+                    <td>
+                        {{-- update --}}
 
-                    <form action='{{route('book.edit',$item->idBook)}}' method="GET">
-                        <button type="submit" class="btn btn-info">Update </button>
-                    </form>
+                        <form action='{{route('book.edit',$item->idBook)}}' method="GET">
+                            <button type="submit" class="btn btn-info">Update </button>
+                        </form>
 
-                    {{-- delete --}}
-                    <form action="{{route('book.destroy',$item->idBook)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">DELETE</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </table>
-       </div>
+                        {{-- delete --}}
+                        <form action="{{route('book.destroy',$item->idBook)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">DELETE</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </table>
+        </div>
         <span>{{$databook->links('pagination::bootstrap-4')}}</span>
     </div>
 </body>
