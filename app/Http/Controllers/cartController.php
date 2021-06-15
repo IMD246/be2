@@ -46,7 +46,7 @@ class cartController extends Controller
             ]
         ]);
         if ($data) {
-            return back()->with('success', 'You added book sucessfull.');
+            return back()->with('success', 'You added book in your cart sucCessfull.');
         }
     }
     public function removeItem($id)
@@ -144,6 +144,14 @@ class cartController extends Controller
         } catch (Exception $exception) {
             return back()->with('error', 'Phone number already exists');
         }
+    }
+    //update status order for user
+    public function updateorderuser(Request $req)
+    {
+        $orders = orders::find($req->idO);
+        $orders->status = 'Canceled';
+        $orders->save();
+        return back()->with('success', 'You have successfully canceled this order');
     }
     //search order id
     public function searchOrders(Request $request)

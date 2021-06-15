@@ -132,7 +132,7 @@
                             <form class="tg-formtheme tg-formnewsletter">
                                 <fieldset>
                                     <input type="email" name="email" class="form-control" placeholder="Enter Your Email ID">
-                                    <button type="button"><i class="icon-envelope"></i></button>
+                                    <a href="./login">   <button type="button"><i class="icon-envelope"></i></button></a>
                                 </fieldset>
                             </form>
                         </div>

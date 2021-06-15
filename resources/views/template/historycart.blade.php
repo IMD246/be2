@@ -41,7 +41,9 @@ if (isset($user)) {
         </header>
         <!-- Banner -->
         <div style="margin-bottom:80px " class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/parallax/bgparallax-07.jpg">
+
             <div class="container">
+
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-innerbannercontent">
@@ -56,6 +58,13 @@ if (isset($user)) {
             </div>
         </div>
         <!-- *****************cart****************? -->
+
+        <div class="container">
+            <div class="newBody" style="  margin-top: 590px">
+                @include('flash-message')
+            </div>
+
+        </div>
         <div class="container" style="margin-bottom: 190px">
             @if($count!="0")
 
@@ -63,11 +72,12 @@ if (isset($user)) {
                 <!-- TABLE HEADER START -->
                 <thead>
                     <tr>
-                        <th class="cart-product">Number</th>
+                        <th class="cart-product">Id order</th>
                         <th class="cart-description">Status</th>
                         <th class="cart-unit text-center">Total</th>
                         <th class="cart_quantity text-center">Time</th>
                         <th class="cart_quantity text-center">Detail</th>
+                        <th class="cart_quantity text-center">Cancel</th>
                     </tr>
                 </thead>
                 <!-- TABLE HEADER END -->
@@ -75,31 +85,36 @@ if (isset($user)) {
 
                 <tbody>
                     <!-- SINGLE CART_ITEM START -->
-                    <?php $countItem = 0; ?>
                     @foreach ($order as $item)
 
-                    <?php $countItem += 1 ?>
-                    <tr>
-                        <td class="cart-product">
-                            <h5>{{$countItem}}</h5>
-                        </td>
-                        <td class="cart-description">
-                            <p class="product-name">{{$item->status}}</p>
-                        </td>
-                        <td class="cart-unit">
-                            <h5>{{$item->total}}.000VND</h5>
-                        </td>
-                        <td class="cart_quantity text-center">
-                            <div class="quantity">
-                                <div class="quantity-input">
-                                    <h5>{{$item->created_at}}</h5>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="cart-unit">
-                            <a href="./historydetail{{$item->id}}">Oder detail</a>
-                        </td>
 
+                    <tr>
+                        <form action="updateorderuser" method="POST">
+                            <input type="hidden" name="idO" value="{{$item->id}}">
+                            @csrf
+                            <td class="cart-product">
+                                <h5>{{$item->id}}</h5>
+                            </td>
+                            <td class="cart-description">
+                                <p class="product-name">{{$item->status}}</p>
+                            </td>
+                            <td class="cart-unit">
+                                <h5>{{$item->total}}.000VND</h5>
+                            </td>
+                            <td class="cart_quantity text-center">
+                                <div class="quantity">
+                                    <div class="quantity-input">
+                                        <h5>{{$item->created_at}}</h5>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="cart-unit">
+                                <a href="./historydetail{{$item->id}}">Oder detail</a>
+                            </td>
+                            <td class="cart-unit">
+                                <button type="submit" class="btn btn-primary">❌</button>
+                            </td>
+                        </form>
                     </tr>
                     @endforeach
                 </tbody>

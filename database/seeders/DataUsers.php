@@ -101,6 +101,18 @@ class DataUsers extends Seeder
             ]);
             DB::table('users')->insert([
                 'id' => "8",
+                'name'=> "Thay thai",
+                'role' => 1,
+                'email'=> 'thai@gmail.com',
+                'email_verified_at' => '2021-05-22 14:52:21',
+                'phone' => '04518321225',
+                'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                'address' => 'TP HCM',
+                'updated_at' => '2021-05-22 14:52:21',
+                'created_at' => '2021-05-22 14:52:21',
+            ]);
+            DB::table('users')->insert([
+                'id' => "9",
                 'name'=> "admin",
                 'role' => 1,
                 'email'=> 'admin@gmail.com',

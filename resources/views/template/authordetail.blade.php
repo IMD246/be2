@@ -46,6 +46,7 @@ $arrbook = $book::where("idAuthor","=",$author->id)->get();
 		<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/parallax/bgparallax-07.jpg">
 			<div class="container">
 				<div class="row">
+					
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="tg-innerbannercontent">
 							<h1>Authors</h1>
@@ -70,7 +71,9 @@ $arrbook = $book::where("idAuthor","=",$author->id)->get();
 					Author Detail Start
 			*************************************-->
 			<div class="tg-sectionspace tg-haslayout">
+		
 				<div class="container">
+				@include('flash-message')
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<div class="tg-authordetail">
@@ -102,12 +105,14 @@ $arrbook = $book::where("idAuthor","=",$author->id)->get();
 											<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
 												<div class="tg-postbook">
 													<figure class="tg-featureimg">
-														<div class="tg-bookimg">
-															<div class="tg-frontcover">
-																<img src="{{url('images/books')}}/{{$item->image}}" alt="image description">
+														<a href="./book_detail.blade.php?idBook={{ $item->idBook }}">
+															<div class="tg-bookimg">
+																<div class="tg-frontcover">
+																	<img src="{{url('images/books')}}/{{$item->image}}" alt="image description">
+																</div>
+																<div class="tg-backcover"><img src="{{url('images/books')}}/{{$item->image}}" alt="image description"></div>
 															</div>
-															<div class="tg-backcover"><img src="{{url('images/books')}}/{{$item->image}}" alt="image description"></div>
-														</div>
+														</a>
 
 
 													</figure>
@@ -126,7 +131,7 @@ $arrbook = $book::where("idAuthor","=",$author->id)->get();
 															<ins>{{$item->price}}.000 VND</ins>
 															<del>{{$item->salePrice}}</del>
 														</span>
-														<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+														<a class="tg-btn tg-btnstyletwo" href="{{url('/cart/add/')}}/{{$item->idBook}}">
 															<i class="fa fa-shopping-basket"></i>
 															<em>Add To Basket</em>
 														</a>
@@ -153,7 +158,7 @@ $arrbook = $book::where("idAuthor","=",$author->id)->get();
 		<!--************************************
 				Footer Start
 		*************************************-->
-	      @include('template.405footer')
+		@include('template.405footer')
 
 		<!--************************************
 				Footer End

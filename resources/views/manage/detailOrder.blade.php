@@ -57,7 +57,7 @@
                     <h5>Address: {{$orders[0]->address}}</h5>
                     <h5>Created_at: {{$orders[0]->created_at}}</h5>
                     <h5>Status: {{$orders[0]->status}}</h5>
-                    <h5>Total: {{$orders[0]->total}}0VND</h5>
+                    <h5>Total + ( 30k): {{$orders[0]->total+30}}.000VND</h5>
                 </div>
 
             </div>

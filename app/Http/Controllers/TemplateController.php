@@ -20,6 +20,7 @@ class TemplateController extends Controller
         $data = DB::table('book')
         ->join('author', 'book.idAuthor', '=', 'author.id')
         ->select('book.*', 'author.nameAuthor')
+        ->limit(9)
         ->get();
         $data1 = Book::orderBy('rate', 'desc')->limit(3)->get();
         $bookList = DB::table('book')
@@ -36,13 +37,29 @@ class TemplateController extends Controller
         ->select('book.*', 'author.nameAuthor')
         ->limit(4)
         ->get();
+        $countAdventure = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '1')
+        ->count();
+        $countStudy = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '2')
+        ->count();
+        $countProramming = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '3')
+        ->count();
+        $countRomance = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '4')
+        ->count();
         $allcategory = Category::all();
         $threenewstbook = Book::orderBy('created_at', 'desc')->limit(3)->get();
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
-        //return
         return view('template.index')->with(compact('data'))->with(compact('data1'))
             ->with(compact('allcategory'))->with(compact('temp1'))->with(compact('temp'))
-            ->with(compact('threenewstbook'))->with(compact('featureArrayBook'))->with(compact('top3Author'))->with(compact('bookList'));
+            ->with(compact('threenewstbook'))->with(compact('featureArrayBook'))->with(compact('top3Author'))->with(compact('bookList'))
+            ->with(compact('countAdventure'))->with(compact('countStudy'))->with(compact('countProramming'))->with(compact('countRomance'));
     }
     public function contactus()
     {
@@ -121,9 +138,38 @@ class TemplateController extends Controller
     }
     public function category()
     {
+        //Count data
+        $countAdventure = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '1')
+        ->count();
+        $countStudy = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '2')
+        ->count();
+        $countProramming = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '3')
+        ->count();
+        $countRomance = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '4')
+        ->count();
+        $countComedy = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '5')
+        ->count();
+        $countAll = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->count();
+        //
+        $book = DB::table('book')
+            ->join('author', 'book.idAuthor', '=', 'author.id')
+            ->select('book.*', 'author.nameAuthor')
+            ->paginate(5);
         $temp = new Author;
-        $book = new Book;
         $temp1 = new Category;
+        
         $allcategory = $temp1->all();
         $allBook = DB::table('book')
         ->orderBy('rate', 'desc')
@@ -133,7 +179,8 @@ class TemplateController extends Controller
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
         //return
 
-        return view('template.category_book')->with(compact('allBook'))->with(compact('temp'))->with(compact('book'))->with(compact('temp1'))->with(compact('allcategory'))->with(compact('top3Author'));
+        return view('template.category_book')->with(compact('allBook'))->with(compact('temp'))->with(compact('book'))->with(compact('temp1'))->with(compact('allcategory'))->with(compact('top3Author'))
+        ->with(compact('countAdventure'))->with(compact('countStudy'))->with(compact('countProramming'))->with(compact('countRomance'))->with(compact('countComedy'))->with(compact('countAll'));
     }
     public function category_book()
     {
@@ -169,17 +216,49 @@ class TemplateController extends Controller
     //Search
     public function new_book(Request $request)
     {
+        //Count data
+        $countAdventure = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '1')
+        ->count();
+        $countStudy = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '2')
+        ->count();
+        $countProramming = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '3')
+        ->count();
+        $countRomance = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '4')
+        ->count();
+        $countComedy = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->where('category.id', 'like', '5')
+        ->count();
+        $countAll = DB::table('book')
+        ->join('category', 'book.idCategory', '=', 'category.id')
+        ->count();
+        //
         $allcategory = Category::all();
-        $book = new Book;
+        $book = DB::table('book')
+            ->join('author', 'book.idAuthor', '=', 'author.id')
+            ->select('book.*', 'author.nameAuthor')
+            ->paginate(5);
         $temp1 = new Category;
         $allcategory = $temp1->all();
         $search = $request->input('search');
         $temp = new Author;
-        $data = DB::table('book')->where('nameBook', 'like', '%' . $search . '%')
-        ->orWhere('Description', 'like','%' . $search . '%')
+        $data = DB::table('book')
+        ->join('author', 'book.idAuthor', '=', 'author.id')
+        ->where('nameBook', 'like', '%' . $search . '%')
+        // ->orWhere('Description', 'like','%' . $search . '%')
+        ->select('book.*', 'author.nameAuthor')
         ->paginate(5);
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
-        return view('template.search')->with(compact('book'))->with(compact('allcategory'))->with(compact('data'))->with(compact('temp'))->with(compact('top3Author'));
+        return view('template.search')->with(compact('book'))->with(compact('allcategory'))->with(compact('data'))->with(compact('temp'))->with(compact('top3Author'))
+        ->with(compact('countAdventure'))->with(compact('countStudy'))->with(compact('countProramming'))->with(compact('countRomance'))->with(compact('countComedy'))->with(compact('countAll'));
     }
     //logout
     public function logoutUser()

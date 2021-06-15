@@ -15,7 +15,7 @@ class HistoryCart extends Migration
     {
         Schema::create('HistoryCart', function (Blueprint $table) {
             $table->integer('qty');
-            $table->float('Total');
+            $table->integer('Total');
             $table->foreignID('idUser');
             $table->foreignID('idBook');
             // $table->timestamp('last_used_at')->nullable(); 

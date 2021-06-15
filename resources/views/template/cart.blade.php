@@ -126,7 +126,7 @@ if (isset($user)) {
                                 <span>Total</span>
                             </td>
                             <td id="total-price-container" class="price" colspan="1">
-                                <span id="total-price">{{Cart::subtotal()}}0VND</span>
+                                <span id="total-price">{{Cart::subtotal()+30}}.000VND</span>
                             </td>
                         </tr>
 

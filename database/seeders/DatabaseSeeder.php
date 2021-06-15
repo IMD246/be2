@@ -26,5 +26,11 @@ class DatabaseSeeder extends Seeder
         $this->call(
             DataUsers::class,
         );
+        $this->call(
+            DataBookOrders::class,
+        );
+        $this->call(
+            DataOrders::class,
+        );
     }
 }

@@ -93,5 +93,15 @@ class DataAuthor extends Seeder
             'facebook' => "#",
             'Twitter' => "#",
         ]);
+         // Thomas Mann
+         DB::table('Author')->insert([
+            'id' => 20,
+            'publishedBooks' => "22",
+            'nameAuthor' => "Thomas Mann",
+            'Description' => "Paul Thomas Mann (German: [paʊ̯l toːmas man]; 6 June 1875 – 12 August 1955) was a German novelist, short story writer, social critic, philanthropist, essayist, and the 1929 Nobel Prize in Literature laureate. His highly symbolic and ironic epic novels and novellas are noted for their insight into the psychology of the artist and the intellectual.",
+            'image' => "thomas.jpg",
+            'facebook' => "#",
+            'Twitter' => "#",
+        ]);
     }
 }

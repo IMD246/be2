@@ -115,6 +115,7 @@ Route::get('/searchUser',[UserController::class,'searchUsers']);
 Route::get('/managecarts',[cartController::class,'manageCarts']);
 Route::get('/detailorder/{id}',[cartController::class,'detailOrder']);
 Route::post('/updateorder',[cartController::class,'updateorder']);
+Route::post('/updateorderuser',[cartController::class,'updateorderuser']);
 Route::get('/searchorder',[cartController::class,'searchOrders']);
 
 //sort in manageCart

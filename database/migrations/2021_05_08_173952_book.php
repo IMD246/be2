@@ -20,8 +20,8 @@ class Book extends Migration
             $table->string('nameBook');
             $table->unsignedInteger('idAuthor');
             $table->float('rate');
-            $table->float('price')->nullable();
-            $table->float('salePrice')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('salePrice')->nullable();
             $table->integer('SoldBooks')->nullable();
             $table->text('Description')->nullable();
             $table->integer('Quantity');

@@ -90,8 +90,8 @@
                             </select>
 
                         </td>
-                        <td>{{$item->created_at}}0VND</td>
-                        <td>{{$item->total}}0VND</td>
+                        <td>{{$item->created_at}}</td>
+                        <td>{{$item->total}}.000VND</td>
                         <td><a href="{{url('/detailorder')}}/{{$item->id}}">Detail</a></td>
                         <td>
                             {{-- update --}}

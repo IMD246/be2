@@ -29,8 +29,8 @@
         <!--************************************
     Header Start
   *************************************-->
-      <header id="tg-header" class="tg-header tg-haslayout">
-        @include('template.404error')
+        <header id="tg-header" class="tg-header tg-haslayout">
+            @include('template.404error')
 
 
         </header>
@@ -40,8 +40,7 @@
         <!--************************************
     Inner Banner Start
   *************************************-->
-        <div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100"
-            data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/parallax/bgparallax-07.jpg">
+        <div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/parallax/bgparallax-07.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -66,140 +65,132 @@
             <!--************************************
      News Grid Start
    *************************************-->
-   <div class="tg-sectionspace tg-haslayout">
-				<div class="container">
-					<div class="row">
-						@include('flash-message')
-						<div id="tg-twocolumns" class="tg-twocolumns">
-                        <?php if (isset($_GET['idCategory'])) {
-                            $wedID = $_GET['idCategory']; ?>
-							<div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
-								<div id="tg-content" class="tg-content">
-									<div class="tg-products">
-										<div class="tg-sectionhead">
-											<h2><span>People’s Choice</span>{{ $temp1->where('id', '=', $wedID)->first()->nameCategory }}</h2>
-
-										</div>
-
-										<div class="tg-featurebook alert" role="alert">
-											<!-- startForeach -->
-                                            @foreach ($book->where('idCategory', '=', $wedID)->get() as $item)
-											<div class="tg-featureditm" style="margin-bottom: 50px;">
-												<div class="row">
-													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-sm hidden-xs">
-
-														<a href="./book_detail.blade.php?idBook={{ $item->idBook }}"><img src="{{url('images/books')}}/{{ $item->image }}" width="200px" height="300px" alt="image description"></a>
-													</div>
-													<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-														<div class="tg-featureditmcontent">
-															<div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
-															<div class="tg-booktitle">
-																<h3><a href="./book_detail.blade.php?idBook={{ $item->idBook }}">{{$item->nameBook}}</a></h3>
-															</div>
-															<span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{ $temp->where('id', '=', $item->idAuthor)->first()->nameAuthor }}</a></span>
-															<!-- <span class="tg-stars"><span></span></span> -->
-															@for($x = 5; $x > 0; $x--)
-															@php
-															if($item->rate > 0.5){
-															echo '<i class="fa fa-star"></i>';
-															}elseif($item->rate <= 0 ){ echo '<i class="fa fa-star-o"></i>' ; }else{ echo '<i class="fa fa-star-half-o"></i>' ; } $item->rate--;
-																@endphp
-																@endfor
-																<div class="tg-priceandbtn">
-																	<span class="tg-bookprice">
-																		<ins>{{$item->price}}.000 VNĐ</ins>
-																		<!-- <del></del> -->
-																	</span>
-																	<a class="tg-btn tg-btnstyletwo tg-active" href="{{url('/cart/add/')}}/{{$item->idBook}}">
-																		<i class="fa fa-shopping-basket"></i>
-																		<em>Add To Basket</em>
-																	</a>
-																</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- endForeach -->
-											@endforeach
-
-                                        </div>
-                                        <!-- ************************************************************************ -->
-
-                                        <!-- ********************************************************************************** -->
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <?php
-                            } ?>
-                            @if (!isset($_GET['idCategory']))
+            <div class="tg-sectionspace tg-haslayout">
+                <div class="container">
+                    <div class="row">
+                        @include('flash-message')
+                        <div id="tg-twocolumns" class="tg-twocolumns">
+                            <?php if (isset($_GET['idCategory'])) {
+                                $wedID = $_GET['idCategory']; ?>
                                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
                                     <div id="tg-content" class="tg-content">
                                         <div class="tg-products">
                                             <div class="tg-sectionhead">
-                                                <h2><span>People’s
-                                                        Choice</span>View All
-                                                </h2>
+                                                <h2><span>People’s Choice</span>{{ $temp1->where('id', '=', $wedID)->first()->nameCategory }}</h2>
+
                                             </div>
+
                                             <div class="tg-featurebook alert" role="alert">
                                                 <!-- startForeach -->
-                                                @foreach ($allBook as $key)
+                                                @foreach ($book as $item)
+                                                <div class="tg-featureditm" style="margin-bottom: 50px;">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-sm hidden-xs">
 
-
-                                                    <div class="tg-featureditm" style="margin-bottom: 50px;">
-                                                        <div class="row">
-                                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-sm hidden-xs">
-                                                            <a href="./book_detail.blade.php?idBook={{ $key->idBook }}"><img src="{{url('images/books')}}/{{ $key->image }}" width="200px" height="300px" alt="image description"></a>
-                                                            </div>
-                                                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                                                                <div class="tg-featureditmcontent">
-
-                                                                    <div class="tg-themetagbox"><span
-                                                                            class="tg-themetag">featured</span></div>
-                                                                    <div class="tg-booktitle">
-                                                                        <h3><a
-                                                                                href="./book_detail.blade.php?idBook={{ $key->idBook }}">{{ $key->nameBook }}</a>
-                                                                        </h3>
-                                                                    </div>
-                                                                    <span class="tg-bookwriter">By: <a
-                                                                            href="./authordetail.blade.php?id={{ $key->idAuthor }}">{{ $key->nameAuthor }}</a></span>
-                                                                      @for($x = 5; $x > 0; $x--)
-                                                                             @php
-                                                                         if($key->rate > 0.5){
-                                                                            echo '<i class="fa fa-star"></i>';
-                                                                        }elseif($key->rate <= 0 ){
-                                                                            echo '<i class="fa fa-star-o"></i>';
-                                                                         }else{
-                                                                             echo '<i class="fa fa-star-half-o"></i>';
-                                                                        }
-                                                                              $key->rate--;
-                                                                           @endphp
-                                                                            @endfor
+                                                            <a href="./book_detail.blade.php?idBook={{ $item->idBook }}"><img src="{{url('images/books')}}/{{ $item->image }}" width="200px" height="300px" alt="image description"></a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                            <div class="tg-featureditmcontent">
+                                                                <div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
+                                                                <div class="tg-booktitle">
+                                                                    <h3><a href="./book_detail.blade.php?idBook={{ $item->idBook }}">{{$item->nameBook}}</a></h3>
+                                                                </div>
+                                                                <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{$item->nameAuthor }}</a></span>
+                                                                <!-- <span class="tg-stars"><span></span></span> -->
+                                                                @for($x = 5; $x > 0; $x--)
+                                                                @php
+                                                                if($item->rate > 0.5){
+                                                                echo '<i class="fa fa-star"></i>';
+                                                                }elseif($item->rate <= 0 ){ echo '<i class="fa fa-star-o"></i>' ; }else{ echo '<i class="fa fa-star-half-o"></i>' ; } $item->rate--;
+                                                                    @endphp
+                                                                    @endfor
                                                                     <div class="tg-priceandbtn">
                                                                         <span class="tg-bookprice">
-                                                                            <ins>{{ $key->price }}.000VND</ins>
-                                                                            <del>{{ $key->salePrice }}.000VNd</del>
+                                                                            <ins>{{$item->price}}.000 VNĐ</ins>
+                                                                            <!-- <del></del> -->
                                                                         </span>
-                                                                        <a class="tg-btn tg-btnstyletwo tg-active"
-                                                                            href="javascript:void(0);">
+                                                                        <a class="tg-btn tg-btnstyletwo tg-active" href="{{url('/cart/add/')}}/{{$item->idBook}}">
                                                                             <i class="fa fa-shopping-basket"></i>
                                                                             <em>Add To Basket</em>
                                                                         </a>
                                                                     </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- endForeach -->
+                                                </div>
+                                                <!-- endForeach -->
                                                 @endforeach
+
                                             </div>
+                                            <span>{{$book->links('pagination::bootstrap-4')}}</span>
                                             <!-- ************************************************************************ -->
-                                            <span>{{$allBook->links('pagination::bootstrap-4')}}</span>
+
                                             <!-- ********************************************************************************** -->
+
                                         </div>
                                     </div>
+
                                 </div>
+                            <?php
+                            } ?>
+                            @if (!isset($_GET['idCategory']))
+                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
+                                <div id="tg-content" class="tg-content">
+                                    <div class="tg-products">
+                                        <div class="tg-sectionhead">
+                                            <h2><span>People’s
+                                                    Choice</span>View All
+                                            </h2>
+                                        </div>
+                                        <div class="tg-featurebook alert" role="alert">
+                                            <!-- startForeach -->
+                                            @foreach ($allBook as $key)
+
+
+                                            <div class="tg-featureditm" style="margin-bottom: 50px;">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-sm hidden-xs">
+                                                        <a href="./book_detail.blade.php?idBook={{ $key->idBook }}"><img src="{{url('images/books')}}/{{ $key->image }}" width="200px" height="300px" alt="image description"></a>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                        <div class="tg-featureditmcontent">
+
+                                                            <div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
+                                                            <div class="tg-booktitle">
+                                                                <h3><a href="./book_detail.blade.php?idBook={{ $key->idBook }}">{{ $key->nameBook }}</a>
+                                                                </h3>
+                                                            </div>
+                                                            <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $key->idAuthor }}">{{ $key->nameAuthor }}</a></span>
+                                                            @for($x = 5; $x > 0; $x--)
+                                                            @php
+                                                            if($key->rate > 0.5){
+                                                            echo '<i class="fa fa-star"></i>';
+                                                            }elseif($key->rate <= 0 ){ echo '<i class="fa fa-star-o"></i>' ; }else{ echo '<i class="fa fa-star-half-o"></i>' ; } $key->rate--;
+                                                                @endphp
+                                                                @endfor
+                                                                <div class="tg-priceandbtn">
+                                                                    <span class="tg-bookprice">
+                                                                        <ins>{{ $key->price }}.000VND</ins>
+                                                                        <del>{{ $key->salePrice }}.000VNd</del>
+                                                                    </span>
+                                                                    <a class="tg-btn tg-btnstyletwo tg-active" href="{{url('/cart/add/')}}/{{$key->idBook}}">
+                                                                        <i class="fa fa-shopping-basket"></i>
+                                                                        <em>Add To Basket</em>
+                                                                    </a>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- endForeach -->
+                                            @endforeach
+                                        </div>
+                                        <!-- ************************************************************************ -->
+                                        <span>{{$allBook->links('pagination::bootstrap-4')}}</span>
+                                        <!-- ********************************************************************************** -->
+                                    </div>
+                                </div>
+                            </div>
                             @endif
 
 
@@ -209,8 +200,7 @@
                                         <form class="tg-formtheme tg-formsearch">
                                             <div class="form-group">
                                                 <button type="submit"><i class="icon-magnifier"></i></button>
-                                                <input type="search" name="search" class="form-group"
-                                                    placeholder="Search by title, author, key...">
+                                                <input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
                                             </div>
                                         </form>
                                     </div>
@@ -221,21 +211,12 @@
                                         <div class="tg-widgetcontent">
                                             <ul>
 
-                                                @foreach ($allcategory as $item)
-                                                    <?php
-                                                    $sum = 0;
-                                                    foreach ($book->all() as $bookItem) {
-                                                    if ($bookItem->idCategory == $item->id) {
-                                                    $sum += $bookItem->Quantity;
-                                                    }
-                                                    }
-                                                    ?>
-
-                                                    <li><a
-                                                            href="../public/category_book.blade.php?idCategory={{ $item->id }}"><span>{{ $item->nameCategory }}</span><em>{{ $sum }}</em></a>
-                                                    </li>
-                                                @endforeach
-                                                <li><a href="../public/category_book.blade.php"><span>View All</span></a>
+                                                <li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[0]->id }}"><span>{{ $allcategory[0]->nameCategory }}</span><em>{{$countAdventure}}</em></a></li>
+                                                <li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[1]->id }}"><span>{{ $allcategory[1]->nameCategory }}</span><em>{{$countStudy}}</em></a></li>
+                                                <li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[2]->id }}"><span>{{ $allcategory[2]->nameCategory }}</span><em>{{$countProramming}}</em></a></li>
+                                                <li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[3]->id }}"><span>{{ $allcategory[3]->nameCategory }}</span><em>{{$countRomance}}</em></a></li>
+                                                <li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[4]->id }}"><span>{{ $allcategory[4]->nameCategory }}</span><em>{{$countComedy}}</em></a></li>
+                                                <li><a href="../public/category_book.blade.php"><span>View All</span><em>{{$countAll}}</em></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -250,72 +231,63 @@
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-01.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-02.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-03.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-04.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-05.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-06.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-07.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-08.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
                                                 <li>
                                                     <figure>
                                                         <img src="images/instagram/img-09.jpg" alt="image description">
-                                                        <figcaption><a href="javascript:void(0);"><i
-                                                                    class="icon-heart"></i><em>50,134</em></a>
+                                                        <figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a>
                                                         </figcaption>
                                                     </figure>
                                                 </li>

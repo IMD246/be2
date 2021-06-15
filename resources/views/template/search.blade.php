@@ -91,7 +91,7 @@
 															<div class="tg-booktitle">
 																<h3><a href="./book_detail.blade.php?idBook={{ $item->idBook }}">{{$item->nameBook}}</a></h3>
 															</div>
-															<span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{ $temp->where('id', '=', $item->idAuthor)->first()->nameAuthor }}</a></span>
+															<span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $item->idAuthor }}">{{$item->nameAuthor }}</a></span>
 															<!-- <span class="tg-stars"><span></span></span> -->
 															@for($x = 5; $x > 0; $x--)
 															@php
@@ -141,19 +141,14 @@
 										</div>
 										<div class="tg-widgetcontent">
 											<ul>
-												@foreach ($allcategory as $item)
-												<?php
-												$sum = 0;
-												foreach ($book->all() as $bookItem) {
-													if ($bookItem->idCategory == $item->id) {
-														$sum += $bookItem->Quantity;
-													}
-												}
-												?>
 
-												<li><a href="../public/category_book.blade.php?idCategory={{ $item->id }}"><span>{{ $item->nameCategory }}</span><em>{{ $sum }}</em></a>
+												<li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[0]->id }}"><span>{{ $allcategory[0]->nameCategory }}</span><em>{{$countAdventure}}</em></a></li>
+												<li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[1]->id }}"><span>{{ $allcategory[1]->nameCategory }}</span><em>{{$countStudy}}</em></a></li>
+												<li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[2]->id }}"><span>{{ $allcategory[2]->nameCategory }}</span><em>{{$countProramming}}</em></a></li>
+												<li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[3]->id }}"><span>{{ $allcategory[3]->nameCategory }}</span><em>{{$countRomance}}</em></a></li>
+												<li><a href="../public/category_book.blade.php?idCategory={{ $allcategory[4]->id }}"><span>{{ $allcategory[4]->nameCategory }}</span><em>{{$countComedy}}</em></a></li>
+												<li><a href="../public/category_book.blade.php"><span>View All</span><em>{{$countAll}}</em></a>
 												</li>
-												@endforeach
 											</ul>
 										</div>
 									</div>
