@@ -28,16 +28,16 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../author">Authors</a>
+                        <a class="nav-link" href="./author">Authors</a>
                     </li>
                     <li class="nav-item  active">
-                        <a class="nav-link" href="../category">Category</a>
+                        <a class="nav-link" href="./category">Category</a>
                     </li>
                     <li class="nav-item  active">
-                        <a class="nav-link" href="../managecarts">Orders</a>
+                        <a class="nav-link" href="./managecarts">Orders</a>
                     </li>
                     <li class="nav-item  active">
-                        <a class="nav-link" href="../manageusers">Users</a>
+                        <a class="nav-link" href="./manageusers">Users</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="./searchorder" method="get">
@@ -95,7 +95,7 @@
                         <td>{{$item->created_at}}</td>
                         <td>{{ $item->total}}0VND</td>
                         <td><a href="{{url('/detailorder')}}/{{$item->id}}">Detail</a></td>
-                       
+
                         <td>
                             {{-- update --}}
 

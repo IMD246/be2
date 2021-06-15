@@ -53,7 +53,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="productName">Name Category</label>
-                    <input type="text" name="nameCategory" id="nameCategory" class="form-control" placeholder="name Category" aria-describedby="helpId" value="{{$category->nameCategory}}">
+                    <input type="text" name="nameCategory" id="nameCategory" class="form-control" placeholder="name Category" aria-describedby="helpId" value="{{$category->nameCategory}}" required>
                 </div>
                 <div class="row">
                     <div class="col-md-10"></div>

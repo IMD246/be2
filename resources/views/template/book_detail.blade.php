@@ -84,50 +84,30 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 											<br>
 											<div class="price">
 												<p style="font-size: 20px; font-style: normal;">Price:
-													<span style="margin-left: 300px; color: red;" class="new_price">
-														<sup> {{$bookdetail->salePrice}}.000VND</sup>
+													<span style="margin-left: 300px;font-size: 30px ;color: red;" class="new_price">
+														<sup> {{$bookdetail->price}}.000VND</sup>
 													</span>
 												</p>
 
-												<p style="font-size: 20px; font-style: normal;">Quantity:
-													<span style="margin-left: 260px; color: red;" class="new_price">
-														<input type="number" id="quantity" value="1" name="quantity" min="1" max="10">
+												<p style="font-size: 20px; font-style: normal;">Sold book:
+													<span style="margin-left: 260px; font-size: 24px " class="new_price">
+													<sup> {{$bookdetail->SoldBooks}} books</sup>
 													</span>
 												</p>
 												<div class="stars">
 													@for($x = 5; $x > 0; $x--)
 													@php
 													if($bookdetail->rate > 0.5){
-													echo '<i class="fa fa-star"></i>';
-													}elseif($bookdetail->rate <= 0 ){ echo '<i class="fa fa-star-o"></i>' ; }else{ echo '<i class="fa fa-star-half-o"></i>' ; } $bookdetail->rate--;
+													echo '<i style="font-size: 30px; color:#FD4" class="fa fa-star"></i>';
+													}elseif($bookdetail->rate <= 0 ){ echo '<i style="font-size: 30px; color:#FD4" class="fa fa-star-o"></i>' ; }else{ echo '<i class="fa fa-star-half-o"></i>' ; } $bookdetail->rate--;
 														@endphp
 														@endfor
 
 														<!-- add to cart -->
 														<a style=" margin-left: 700px; padding: 22px;padding-left: 30px;padding-right: 30px;font-size: 18px" href="{{url('/cart/add/')}}/{{$bookdetail->idBook}}" class="btn btn-primary">Add to cart</a>
 
-														<!-- THEM VAO USER IDAU SAU CAI TEMPATE.UPDATE NEU CO-->
-														<form method="POST" action="{{route('template.store')}}">
-															@csrf
-															<P>
-																<input id="idBook" value="{{$bookdetail->idBook}}" type="hidden" name="idBook" hidden />
-															</p>
-															<input class="star star-5" id="star-5" value="5" type="radio" name="star" />
-															<label class="star star-5" for="star-5"></label>
-															<input class="star star-4" value="4" id="star-4" type="radio" name="star" />
-															<label class="star star-4" for="star-4"></label>
-															<input class="star star-3" value="3" id="star-3" type="radio" name="star" />
-															<label class="star star-3" for="star-3"></label>
-															<input class="star star-2" value="2" id="star-2" type="radio" name="star" />
-															<label class="star star-2" for="star-2"></label>
-															<input class="star star-1" value="1" id="star-1" type="radio" name="star" />
-															<label class="star star-1" for="star-1"></label>
-															<input id="comment" type="text" name="comment" />
-															<button type="submit" class="btn btn-primary">Send</button>
+
 												</div>
-
-												</form>
-
 												<div class="tg-booksfromauthor" style="margin-top: 50px;">
 													<div class="tg-sectionhead">
 														<h2>Related books</h2>
@@ -175,30 +155,83 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 														@endforeach
 
 													</div>
+													<div style="margin-top: 90px" class="tg-sectionhead">
+														<h2>Rating and Review</h2>
+													</div>
+
+													<!-- THEM VAO USER IDAU SAU CAI TEMPATE.UPDATE NEU CO-->
+													<form method="POST" action="{{route('template.store')}}">
+														@csrf
+														<P>
+															<input id="idBook" value="{{$bookdetail->idBook}}" type="hidden" name="idBook" hidden />
+														</p>
+														<div class="row">
+															<div class="col-md-5">
+																<input class="star star-5" id="star-5" value="5" type="radio" name="star" />
+																<label class="star star-5" for="star-5"></label>
+																<input class="star star-4" value="4" id="star-4" type="radio" name="star" />
+																<label class="star star-4" for="star-4"></label>
+																<input class="star star-3" value="3" id="star-3" type="radio" name="star" />
+																<label class="star star-3" for="star-3"></label>
+																<input class="star star-2" value="2" id="star-2" type="radio" name="star" />
+																<label class="star star-2" for="star-2"></label>
+																<input class="star star-1" value="1" id="star-1" type="radio" name="star" />
+																<label class="star star-1" for="star-1"></label>
+																<input size="114" id="comment" type="text" name="comment" style="text-transform: none;" required placeholder="Enter your comment"/>
+															</div>
+															<div class="col-md-7"></div>
+														</div>
+														<div class="row">
+															<div class="col-md-10"></div>
+															<div class="col-md-2">
+																<button type="submit" style="padding: 10px; padding-left: 20px; padding-right: 20px;" class="btn btn-success">Send</button>
+															</div>
+														</div>
+
+
+
+													</form>
+													<div class="revi">
+														@foreach($review->where("idBook","=",$bookdetail->idBook) as $key )
+														<div class="bodyRevi" style="margin-bottom: 20px;">
+															<div class="row">
+																<div class="col-md-1"><img src="./images/books/git.png" alt=""></div>
+																<div class="col-md-11">
+																	<h4 style="font-weight: bold;">{{$key->name}}</h4>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-md-1">
+																</div>
+																<div class="col-md-11">
+																	@for($x = 5; $x > 0; $x--)
+																	@php
+																	if($key->rate > 0.5){
+																	echo '<i class="fa fa-star"></i>';
+																	}elseif($key->rate <= 0 ){ echo '<i class="fa fa-star-o"></i>' ; }else{ echo '<i class="fa fa-star-half-o"></i>' ; } $key->rate--;
+																		@endphp
+																		@endfor
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-md-1"></div>
+																<div class="col-md-11">
+																	<h5>{{$key->comment}}</h5>
+																</div>
+															</div>
+
+														</div>
+														@endforeach
+													</div>
+												
 												</div>
-												<h1>Rateing and Review</h1>
-												@foreach($review->where("idBook","=",$bookdetail->idBook) as $key )
-												<h3>{{$key->comment}}</h3>
-												<p>
-
-													@for($x = 5; $x > 0; $x--)
-													@php
-													if($key->rate > 0.5){
-													echo '<i class="fa fa-star"></i>';
-													}elseif($key->rate <= 0 ){ echo '<i class="fa fa-star-o"></i>' ; }else{ echo '<i class="fa fa-star-half-o"></i>' ; } $key->rate--;
-														@endphp
-														@endfor
-												</p>
-
-												@endforeach
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!--************************************
+						<!--************************************
 					Author Detail End
 			*************************************-->
 		</main>

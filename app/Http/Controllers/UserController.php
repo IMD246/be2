@@ -29,7 +29,7 @@ class UserController extends Controller
             $user->save();
             return back()->with('success', 'You updated infomation successfull');
         } catch (Exception $exception) {
-            return back()->with('error', 'Phone number already exists');
+            return back()->with('error', 'Phone number or email already exists');
         }
     }
     public function deleteUser($id){

@@ -13,6 +13,7 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idUser');
             $table->integer('idBook');
             $table->text('comment')->nullable();
             $table->float('rate');

@@ -55,30 +55,30 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="productPhoto">publishedBooks</label>
-                            <input type="number" name="publishedBooks" id="publishedBooks" class="form-control" placeholder="publishedBooks" aria-describedby="helpId" value="1" min="1" max="1000000" value="{{$author->publishedBooks}}">
+                            <input type="number" name="publishedBooks" id="publishedBooks" class="form-control" placeholder="publishedBooks" aria-describedby="helpId" value="1" min="1" max="1000000" value="{{$author->publishedBooks}}" required>
                         </div>
                         <div class="form-group">
                             <label for="productName">Name Author</label>
-                            <input type="text" name="nameAuthor" id="nameAuthor" class="form-control" placeholder="name Author" aria-describedby="helpId" value="{{$author->nameAuthor}}">
+                            <input type="text" name="nameAuthor" id="nameAuthor" class="form-control" placeholder="name Author" aria-describedby="helpId" value="{{$author->nameAuthor}}" required>
                         </div>
                         <div class="form-group">
                             <label for="productDescription">Author description</label>
-                            <textarea type="text" name="authorDes" id="authorDes" class="form-control" placeholder="Author Description" aria-describedby="helpId">{{$author->Description}}</textarea>
+                            <textarea type="text" name="authorDes" id="authorDes" class="form-control" placeholder="Author Description" aria-describedby="helpId" required>{{$author->Description}}</textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
 
                         <div class="form-group">
                             <label for="productName">Facebook</label>
-                            <input type="text" name="facebook" id="facebook" class="form-control" placeholder="facebook" aria-describedby="helpId" value="{{$author->facebook}}">
+                            <input type="text" name="facebook" id="facebook" class="form-control" placeholder="facebook" aria-describedby="helpId" value="{{$author->facebook}}" required>
                         </div>
                         <div class="form-group">
                             <label for="productName">Twitter</label>
-                            <input type="text" name="twitter" id="twitter" class="form-control" placeholder="twitter" aria-describedby="helpId" value="{{$author->Twitter}}">
+                            <input type="text" name="twitter" id="twitter" class="form-control" placeholder="twitter" aria-describedby="helpId" value="{{$author->Twitter}}" required>
                         </div>
                         <div class="form-group">
                             <label for="productPhoto">Author Image</label>
-                            <input type="file" name="authorPhoto" id="authorPhoto" class="form-control" aria-describedby="helpId" value="{{url('images/author')}}/{{$author->image}}.jpg">
+                            <input type="file" name="authorPhoto" id="authorPhoto" class="form-control" aria-describedby="helpId" value="{{url('images/author')}}/{{$author->image}}.jpg" required> 
                             <img src="{{url('images/author')}}/{{$author->image}}" width="150">
                         </div>
                     </div>

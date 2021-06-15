@@ -91,7 +91,7 @@ if (isset($user)) {
                             <td class="cart_quantity text-center">
                             <div class="quantity">
 								<div class="quantity-input">
-									<input type="text" name="product-quatity" value="{{$item->qty}}" data-max="120" pattern="[0-9]*" >									
+									<input type="text" readonly name="product-quatity" value="{{$item->qty}}" data-max="120" pattern="[0-9]*" >									
 									<a href="{{url('cart/increase')}}/{{$item->rowId}}" class="btn btn-primary" style="padding: 10px" href="#">+</a>
 									<a href="{{url('cart/decrease')}}/{{$item->rowId}}" class="btn btn-danger" style="padding: 10px" href="#">-</a>
 								</div>

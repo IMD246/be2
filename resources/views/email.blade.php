@@ -104,7 +104,7 @@ body {
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="inputEmail">Email</label>
-								<input type="email" value="hongloi12123@gmail.com"  name="email" class="form-control" placeholder="Enter Email">
+								<input type="email" readonly style="text-transform: none;" value="hongloi12123@gmail.com"  name="email" class="form-control" placeholder="Enter Email">
                                 @error('email')
                                 <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -113,14 +113,14 @@ body {
 					</div>            
 					<div class="form-group">
 						<label for="inputSubject">Subject</label>
-                        <input type="text" name="subject" class="form-control" placeholder="Enter subject">
+                        <input type="text" name="subject" class="form-control" style="text-transform: none;" placeholder="Enter subject" required>
                         @error('subject')
                         <span class="text-danger"> {{ $message }} </span>
                         @enderror
 					</div>
 					<div class="form-group">
 						<label for="inputMessage">Message</label>
-                        <textarea name="content" rows="5" class="form-control" placeholder="Enter Your Message"></textarea>
+                        <textarea name="content" rows="5" class="form-control" style="text-transform: none;" placeholder="Enter Your Message" required></textarea>
                         @error('content')
                         <span class="text-danger"> {{ $message }} </span>
                         @enderror

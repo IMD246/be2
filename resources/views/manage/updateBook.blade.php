@@ -56,11 +56,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="productName">Name book</label>
-                            <input value="{{$oldBook->nameBook}}" type="text" name="bookName" id="bookName" class="form-control" placeholder="Name Book" aria-describedby="helpId">
+                            <input value="{{$oldBook->nameBook}}" type="text" name="bookName" id="bookName" class="form-control" placeholder="Name Book" aria-describedby="helpId" required>
                         </div>
                         <div class="form-group">
                             <label for="productDescription">Book description</label>
-                            <textarea type="text" name="bookDes" id="bookDes" class="form-control" placeholder="Book Description" aria-describedby="helpId">{{$oldBook->Description}}</textarea>
+                            <textarea type="text" name="bookDes" id="bookDes" class="form-control" placeholder="Book Description" aria-describedby="helpId" required>{{$oldBook->Description}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="author">Author</label>
@@ -88,34 +88,34 @@
                         </div>
                         <div class="form-group">
                             <label for="productPhoto">Book price</label>
-                            <input value="{{$oldBook->price}}" type="number" name="bookPrice" id="bookPrice" class="form-control" placeholder="book Price" aria-describedby="helpId" value="1000">
+                            <input value="{{$oldBook->price}}" type="number" name="bookPrice" id="bookPrice" class="form-control" placeholder="book Price" aria-describedby="helpId" value="1000" required>
                         </div>
                         <div class="form-group">
                             <label for="productPhoto">Sale price</label>
-                            <input value="{{$oldBook->salePrice}}" type="number" name="salePrice" id="salePrice" class="form-control" placeholder="sale Price" aria-describedby="helpId" value="1000">
+                            <input value="{{$oldBook->salePrice}}" type="number" name="salePrice" id="salePrice" class="form-control" placeholder="sale Price" aria-describedby="helpId" value="1000" required>
                         </div>
                     </div>
                     <div class="col-md-6">
 
                         <div class="form-group">
                             <label for="productPhoto">Rate</label>
-                            <input value="{{$oldBook->rate}}" type="number" name="bookRate" id="bookRate" class="form-control" placeholder="Rate" aria-describedby="helpId" min="1" max="5" value="1">
+                            <input value="{{$oldBook->rate}}" type="number" name="bookRate" id="bookRate" class="form-control" placeholder="Rate" aria-describedby="helpId" min="1" max="5" value="1" required>
                         </div>
                         <div class="form-group">
                             <label for="productPhoto">Book Sold</label>
-                            <input value="{{$oldBook->SoldBooks}}" type="number" name="bookSold" id="bookSold" class="form-control" placeholder="BookSold" aria-describedby="helpId" min="1" max="100000" value="1">
+                            <input value="{{$oldBook->SoldBooks}}" type="number" name="bookSold" id="bookSold" class="form-control" placeholder="BookSold" aria-describedby="helpId" min="1" max="100000" value="1" required>
                         </div>
                         <div class="form-group">
                             <label for="productPhoto">Quantity</label>
-                            <input value="{{$oldBook->Quantity}}" type="number" name="quantity" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="helpId" min="1" max="1000" value="1">
+                            <input value="{{$oldBook->Quantity}}" type="number" name="quantity" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="helpId" min="1" max="1000" value="1" required>
                         </div>
                         <div class="form-group">
                             <label for="productPhoto">Feature</label>
-                            <input value="{{$oldBook->Feature}}" type="number" name="feature" id="feature" class="form-control" placeholder="Feature" aria-describedby="helpId" min="0" max="1" value="0">
+                            <input value="{{$oldBook->Feature}}" type="number" name="feature" id="feature" class="form-control" placeholder="Feature" aria-describedby="helpId" min="0" max="1" value="0" required>
                         </div>
                         <div class="form-group">
                             <label for="productPhoto">Book Image</label>
-                            <input type="file" name="bookPhoto" id="bookPhoto" class="form-control" aria-describedby="helpId" value="{{url('images/books')}}/{{$oldBook->image}}.jpg">
+                            <input type="file" name="bookPhoto" id="bookPhoto" class="form-control" aria-describedby="helpId" value="{{url('images/books')}}/{{$oldBook->image}}.jpg" required>
                             <img src="{{url('images/books')}}/{{$oldBook->image}}" width="150">
                         </div>
                     </div>
