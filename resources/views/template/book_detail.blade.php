@@ -123,7 +123,7 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 															<input class="star star-1" value="1" id="star-1" type="radio" name="star" />
 															<label class="star star-1" for="star-1"></label>
 															<input id="comment" type="text" name="comment" />
-															<button type="submit" class="btn btn-primary">Gui</button>
+															<button type="submit" class="btn btn-primary">Send</button>
 												</div>
 
 												</form>

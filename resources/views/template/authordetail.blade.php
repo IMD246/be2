@@ -129,7 +129,7 @@ $arrbook = $book::where("idAuthor","=",$author->id)->get();
 														<span class="tg-stars"><span></span></span>
 														<span class="tg-bookprice">
 															<ins>{{$item->price}}.000 VND</ins>
-															<del>{{$item->salePrice}}</del>
+															<del>{{$item->salePrice}}.000 VND</del>
 														</span>
 														<a class="tg-btn tg-btnstyletwo" href="{{url('/cart/add/')}}/{{$item->idBook}}">
 															<i class="fa fa-shopping-basket"></i>

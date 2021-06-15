@@ -51,7 +51,7 @@ $user = auth()->user();
                         <div class="tg-sectionhead">
                         @include('flash-message')
                             <h2><span>People’s Choice</span>Bestselling Books</h2>
-                            <a class="tg-btn" href="../public/category_book.blade.php">View All</a>
+                            <a class="tg-btn" href="../public/category_book.blade.php1">View All</a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -69,7 +69,7 @@ $user = auth()->user();
                                     <div class="tg-postbookcontent">
 
                                         <ul class="tg-bookscategories">
-                                            <li><a href="../public/category_book.blade.php?idCategory={{ $book->idCategory }}">{{ $temp1::find($book->idCategory)->nameCategory }}</a>
+                                            <li><a href="../public/category_book.blade.php{{ $book->idCategory }}">{{ $temp1::find($book->idCategory)->nameCategory }}</a>
                                             </li>
                                         </ul>
 
@@ -128,7 +128,7 @@ $user = auth()->user();
                                 <p>day la cac cuon sach mới nhất trong tuần này</p>
                             </div>
                             <div class="tg-btns">
-                                <a class="tg-btn tg-active" href="../public/category_book.blade.php">View All</a>
+                                <a class="tg-btn tg-active" href="../public/category_book.blade.php1">View All</a>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -151,7 +151,7 @@ $user = auth()->user();
                                             </figure>
                                             <div class="tg-postbookcontent">
                                                 <ul class="tg-bookscategories">
-                                                    <li><a href="javascript:void(0);">{{ $temp1::find($book->idCategory)->nameCategory }}</a>
+                                                    <li><a href="../public/category_book.blade.php{{ $book->idCategory }}">{{ $temp1::find($book->idCategory)->nameCategory }}</a>
                                                     </li>
 
                                                 </ul>
@@ -246,7 +246,7 @@ $user = auth()->user();
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-sectionhead">
                             <h2><span>Some Great Books</span>Picked By Authors</h2>
-                            <a class="tg-btn" href="../public/category_book.blade.php">View All</a>
+                            <a class="tg-btn" href="../public/category_book.blade.php1">View All</a>
                         </div>
                     </div>
                     <div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
@@ -303,11 +303,11 @@ $user = auth()->user();
 
                                 <div class="item tg-testimonial">
                                     <figure><img src="./images/books/anhtestphp.jpg" alt="image description"></figure>
-                                    <q>từ khi tôi đến trang wed library nhóm 10.tôi éo học gì.còn phải đóng tiền cho bọn nó.bọn khốn.</q>
+                                    <q>You know when you love someone when you want them to be happy even if their happiness means that you’re not part of it.  </q>
 
                                     <div class="tg-testimonialauthor">
-                                        <h3>Người quản lí</h3>
-                                        <span> Nguyễn Trung Nghĩa</span>
+                                        <h3>Manager</h3>
+                                        <span> Nguyen Trung Nghia</span>
                                     </div>
                                 </div>
                             </div>
@@ -329,8 +329,8 @@ $user = auth()->user();
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="tg-calltoaction">
-                                <h2>Đăng kí tài khoản </h2>
-                                <h3>để nhận được các khuyến mãi mới nhất
+                                <h2>You should login</h2>
+                                <h3>To receive the latest promotions
                                 </h3>
                             </div>
                         </div>
@@ -350,7 +350,7 @@ $user = auth()->user();
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-sectionhead">
                             <h2><span>Latest News &amp; Articles</span>What's Hot in The News</h2>
-                            <a class="tg-btn" href="../public/category_book.blade.php">View All</a>
+                            <a class="tg-btn" href="../public/category_book.blade.php1">View All</a>
                         </div>
                     </div>
                     <div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">

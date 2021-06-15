@@ -93,13 +93,63 @@ class DataAuthor extends Seeder
             'facebook' => "#",
             'Twitter' => "#",
         ]);
-         // Thomas Mann
-         DB::table('Author')->insert([
+        // Thomas Mann
+        DB::table('Author')->insert([
             'id' => 20,
             'publishedBooks' => "22",
             'nameAuthor' => "Thomas Mann",
             'Description' => "Paul Thomas Mann (German: [paʊ̯l toːmas man]; 6 June 1875 – 12 August 1955) was a German novelist, short story writer, social critic, philanthropist, essayist, and the 1929 Nobel Prize in Literature laureate. His highly symbolic and ironic epic novels and novellas are noted for their insight into the psychology of the artist and the intellectual.",
             'image' => "thomas.jpg",
+            'facebook' => "#",
+            'Twitter' => "#",
+        ]);
+        //Robe
+        DB::table('Author')->insert([
+            'id' => 21,
+            'publishedBooks' => "22",
+            'nameAuthor' => "Thomas Mann",
+            'Description' => "Robert Cecil Martin, colloquially called Uncle Bob,[2] is an American software engineer, instructor, and best-selling author. He is most recognized for developing many software design principles and for being a founder of the influential Agile Manifesto.[3]",
+            'image' => "robe.jpg",
+            'facebook' => "#",
+            'Twitter' => "#",
+        ]);
+        //Dusty Phillips
+        DB::table('Author')->insert([
+            'id' => 22,
+            'publishedBooks' => "22",
+            'nameAuthor' => "Dusty Phillips",
+            'Description' => "Dusty Phillips is a Canadian author and programmer. He holds a master's degree in computer science emphasizing human computer interaction. He's been toying with programming ever since accidentally inserting a comma into a Q-BASIC program (NIBBLES.BAS) and eventually debugging it so he could continue playing his favourite game. Today he's got more Python interpreters on his laptop than he can count and is constantly experimenting with new technologies.",
+            'image' => "dus.jpg",
+            'facebook' => "#",
+            'Twitter' => "#",
+        ]);
+        //Charles Petzold
+        DB::table('Author')->insert([
+            'id' => 23,
+            'publishedBooks' => "32",
+            'nameAuthor' => "Charles Petzold",
+            'Description' => "Charles Petzold has been writing about Windows programming for 25 years. A Windows Pioneer Award winner, Petzold is author of the classic Programming Windows, the widely acclaimed Code: The Hidden Language of Computer Hardware and Software, Programming Windows Phone 7, and more than a dozen other books.",
+            'image' => "cha.jpg",
+            'facebook' => "#",
+            'Twitter' => "#",
+        ]);
+        //Kevin Horsley
+        DB::table('Author')->insert([
+            'id' => 24,
+            'publishedBooks' => "99",
+            'nameAuthor' => "Kevin Horsley",
+            'Description' => "For over 25 years, Kevin Horsley has been analyzing the mind and memory and its capacity for brilliance. He is one of only a few people in the world to have received the title International Grandmaster of Memory",
+            'image' => "cha.jpg",
+            'facebook' => "#",
+            'Twitter' => "#",
+        ]);
+        //Sönke Ahrens
+        DB::table('Author')->insert([
+            'id' => 25,
+            'publishedBooks' => "39",
+            'nameAuthor' => "Sönke Ahrens",
+            'Description' => "2/2 Maybe even in media progress is possible. Portraying more interesting role models, providing better measurements of success, focusing on problem-solving, keeping an eye on what is really important in the long run. Isn't there a real demand for a media outlet like this?",
+            'image' => "so.jpg",
             'facebook' => "#",
             'Twitter' => "#",
         ]);

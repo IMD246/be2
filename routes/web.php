@@ -32,13 +32,13 @@ Route::get('/',[TemplateController::class,'index']);//
 Route::get('/contactus.blade.php',[TemplateController::class,'contactus']);//
 Route::get('/404error.blade.php',[TemplateController::class,'r404error']);//
 Route::get('/405footer.blade.php',[TemplateController::class,'r405footer']);//
-
+Route::get('/topSell',[TemplateController::class,'topSell']);//
 Route::get('/aboutus.blade.php',[TemplateController::class,'aboutus']);//
 Route::get('/authors.blade.php',[TemplateController::class,'authors']);//
 Route::get('/authordetail.blade.php',[TemplateController::class,'authordetail']);//
 Route::get('/book_detail.blade.php',[TemplateController::class,'book_detail']);
-Route::get('/category_book.blade.php',[TemplateController::class,'category']);
-
+Route::get('/category_book.blade.php{id}',[TemplateController::class,'category']);
+// Route::get('/category_book?idCategory={id}',[TemplateController::class,'category_id']);
 Route::post('/book_detail.blade.php?idBook={id}',[TemplateController::class,'updateRate']);
 //Auth
 Route::get('redirects',[TemplateController::class,'getAuth']);
@@ -104,6 +104,7 @@ Route::get('/profile{id}',[TemplateController::class,'profileUser']);
 Route::post('/edit',[TemplateController::class,'updateProfile']);
 //logout
 Route::get('/logout',[TemplateController::class,'logoutUser']);
+
 
 //ManageUser
 Route::get('/manageusers',[UserController::class,'index']);

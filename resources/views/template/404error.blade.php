@@ -90,12 +90,12 @@ if (isset($user)) {
                     <div id="tg-navigation" class="collapse navbar-collapse tg-navigation">
                         <ul>
                             <li class="menu-item-has-children">
-                                <a href="../public/category_book.blade.php">All Categories</a>
+                                <a href="../public/category_book.blade.php1">All Categories</a>
                                 <div class="mega-menu">
                                     <ul class="tg-themetabnav" role="tablist">
                                         @foreach ($allcategory as $item)
                                         <li class="menu-item-has-children-123" style="margin-left: 20px;">
-                                            <a href="../public/category_book.blade.php?idCategory={{ $item->id }}">{{$item->nameCategory}}</a>
+                                            <a href="../public/category_book.blade.php{{ $item->id }}">{{$item->nameCategory}}</a>
 
                                         </li>
                                         @endforeach
@@ -114,7 +114,7 @@ if (isset($user)) {
                                 <a href="authors.blade.php">Authors</a>
 
                             </li>
-                            <li style="margin-left: 20px;"><a href="./category_book.blade.php">Book Category</a></li>
+                            <li style="margin-left: 20px;"><a href="./topSell">Best selling</a></li>
 
                             <li style="margin-left: 20px;"><a href="contactus.blade.php">Contact</a></li>
 

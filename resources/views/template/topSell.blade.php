@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-innerbannercontent">
-                            <h1>Categories Book</h1>
+                            <h1>Best selling books</h1>
                             <ol class="tg-breadcrumb">
                                 <li><a href="javascript:void(0);">home</a></li>
                                 <li class="tg-active">Products</li>
@@ -76,7 +76,7 @@
                                     <div id="tg-content" class="tg-content">
                                         <div class="tg-products">
                                             <div class="tg-sectionhead">
-                                                <h2><span>People’s Choice</span>{{ $allcategory[0]->nameCategory }}</h2>
+                                                <h2><span>People’s Choice</span>Best selling books</h2>
 
                                             </div>
 
@@ -161,6 +161,7 @@
                                                                 </h3>
                                                             </div>
                                                             <span class="tg-bookwriter">By: <a href="./authordetail.blade.php?id={{ $key->idAuthor }}">{{ $key->nameAuthor }}</a></span>
+                                                            <span class="tg-bookwrite">Sold: {{ $key->SoldBooks }}</span><br>
                                                             @for($x = 5; $x > 0; $x--)
                                                             @php
                                                             if($key->rate > 0.5){
