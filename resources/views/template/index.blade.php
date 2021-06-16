@@ -26,7 +26,7 @@ $user = auth()->user();
 
 <header id="tg-header" class="tg-header tg-haslayout">
     @include('template.404error')
-  
+
 
 </header>
 
@@ -49,7 +49,7 @@ $user = auth()->user();
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-sectionhead">
-                        @include('flash-message')
+                            @include('flash-message')
                             <h2><span>People’s Choice</span>Bestselling Books</h2>
                             <a class="tg-btn" href="../public/category_book.blade.php1">View All</a>
                         </div>
@@ -125,7 +125,7 @@ $user = auth()->user();
                                 <h2><span>Taste The New Spice</span>New Release Books</h2>
                             </div>
                             <div class="tg-description">
-                                <p>day la cac cuon sach mới nhất trong tuần này</p>
+                                <p>The latest books released in the past weeks</p>
                             </div>
                             <div class="tg-btns">
                                 <a class="tg-btn tg-active" href="../public/category_book.blade.php1">View All</a>
@@ -196,7 +196,8 @@ $user = auth()->user();
                                 <div class="tg-titlepluscounter">
                                     <h2>Adventure</h2>
                                     <h3 data-from="0" data-to=" {{$countAdventure}}" data-speed="8000" data-refresh-interval="50">
-                                       {{$countAdventure}}</h3>
+                                        {{$countAdventure}}
+                                    </h3>
                                 </div>
                             </div>
                             <div class="tg-collectioncounter tg-horror">
@@ -206,7 +207,8 @@ $user = auth()->user();
                                 <div class="tg-titlepluscounter">
                                     <h2>Study</h2>
                                     <h3 data-from="0" data-to="{{$countStudy}}" data-speed="8000" data-refresh-interval="50">
-                                        {{$countStudy}}</h3>
+                                        {{$countStudy}}
+                                    </h3>
                                 </div>
                             </div>
                             <div class="tg-collectioncounter tg-romance">
@@ -216,7 +218,8 @@ $user = auth()->user();
                                 <div class="tg-titlepluscounter">
                                     <h2>Programming</h2>
                                     <h3 data-from="0" data-to="{{$countProramming}}" data-speed="8000" data-refresh-interval="50">
-                                    {{$countProramming}}</h3>
+                                        {{$countProramming}}
+                                    </h3>
                                 </div>
                             </div>
                             <div class="tg-collectioncounter tg-fashion">
@@ -226,7 +229,8 @@ $user = auth()->user();
                                 <div class="tg-titlepluscounter">
                                     <h2>Romance</h2>
                                     <h3 data-from="0" data-to="{{$countRomance}}" data-speed="8000" data-refresh-interval="50">
-                                    {{$countRomance}}</h3>
+                                        {{$countRomance}}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -261,14 +265,14 @@ $user = auth()->user();
                                         </a>
                                     </div>
                                     <a href="./book_detail.blade.php?idBook={{ $item->idBook }}">
-                                    <div class="tg-hovercontent">
-                                        <div class="tg-description">
-                                            <p>{{$item->Description}}</p>
+                                        <div class="tg-hovercontent">
+                                            <div class="tg-description">
+                                                <p>{{$item->Description}}</p>
+                                            </div>
+                                            <strong class="tg-bookcategory">{{ $temp1->where('id', '=',$item->idCategory)->first()->nameCategory}}</strong>
+                                            <strong class="tg-bookprice">Price: {{$item->salePrice}}.000VND</strong>
+
                                         </div>
-                                        <strong class="tg-bookcategory">{{ $temp1->where('id', '=',$item->idCategory)->first()->nameCategory}}</strong>
-                                        <strong class="tg-bookprice">Price: {{$item->salePrice}}.000VND</strong>
-                                      
-                                    </div>
                                     </a>
                                 </figure>
                                 <div class="tg-postbookcontent">
@@ -301,13 +305,33 @@ $user = auth()->user();
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-push-2">
                             <div id="tg-testimonialsslider" class="tg-testimonialsslider tg-testimonials owl-carousel">
 
-                                <div class="item tg-testimonial">
-                                    <figure><img src="./images/books/anhtestphp.jpg" alt="image description"></figure>
-                                    <q>You know when you love someone when you want them to be happy even if their happiness means that you’re not part of it.  </q>
+                            <div class="item tg-testimonial" style="text-align: center;">
+                                    <figure><img src="./images/books/nghia.png" alt="image description"></figure>
+                                    <q>Don’t cry because it’s over, smile because it happened </q>
 
                                     <div class="tg-testimonialauthor">
-                                        <h3>Manager</h3>
+                                        <h3>Member</h3>
                                         <span> Nguyen Trung Nghia</span>
+                                    </div>
+                                </div>
+                                <!-- Nghia -->
+                                <div class="item tg-testimonial" style="text-align: center;">
+                                    <figure><img src="./images/books/anhtestphp.jpg" alt="image description"></figure>
+                                    <q >You only live once, but if you do it right, once is enough.  </q>
+
+                                    <div class="tg-testimonialauthor">
+                                        <h3>Member</h3>
+                                        <span> Nguyen Thanh Duy</span>
+                                    </div>
+                                </div>
+                                <!-- Loi -->
+                                <div class="item tg-testimonial" style="text-align: center;">
+                                    <figure><img src="./images/books/loi.jpg" alt="image description"></figure>
+                                    <q> I’m selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can’t handle me at my worst, then you sure as hell don’t deserve me at my best.  </q>
+
+                                    <div class="tg-testimonialauthor">
+                                        <h3>Member</h3>
+                                        <span> Nguyen Hong Loi</span>
                                     </div>
                                 </div>
                             </div>

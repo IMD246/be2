@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
 @php
 $author=$temp::where("id","=",$_GET['id'])->first();
-$arrbook = $book::where("idAuthor","=",$author->id)->get();
+$arrbook = $book::where("idAuthor","=",$author->id)->limit(4)->get();
 
 @endphp
 

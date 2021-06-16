@@ -46,7 +46,7 @@ class cartController extends Controller
             ]
         ]);
         if ($data) {
-            return back()->with('success', 'You added book in your cart sucCessfull.');
+            return back()->with('success', 'You added book in cart successfull.');
         }
     }
     public function removeItem($id)

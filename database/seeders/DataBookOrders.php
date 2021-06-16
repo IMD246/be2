@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -471,5 +472,41 @@ class DataBookOrders extends Seeder
             'qty' => "1",
             'total' => "90",
         ]);
+        $limit = 500;
+        $fake  = Faker::create();
+        $count =32 ;
+        for ($i = 1; $i < $limit; $i++) {
+            $count++;
+            DB::table('book_orders')->insert([
+                'book_id' => "1",
+                'orders_id' => $count,
+                'qty' => "1",
+                'total' => "250",
+            ]);
+            DB::table('book_orders')->insert([
+                'book_id' => "2",
+                'orders_id' => $count,
+                'qty' => "1",
+                'total' => "50",
+            ]);
+            DB::table('book_orders')->insert([
+                'book_id' => "3",
+                'orders_id' => $count,
+                'qty' => "1",
+                'total' => "100",
+            ]);
+            DB::table('book_orders')->insert([
+                'book_id' => "4",
+                'orders_id' => $count,
+                'qty' => "1",
+                'total' => "50",
+            ]);
+            DB::table('book_orders')->insert([
+                'book_id' => "5",
+                'orders_id' => $count,
+                'qty' => "2",
+                'total' => "120",
+            ]);
+        }
     }
 }

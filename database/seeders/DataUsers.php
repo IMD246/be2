@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use Faker\Factory as Faker;
 class DataUsers extends Seeder
 {
     /**
@@ -123,7 +123,23 @@ class DataUsers extends Seeder
                 'updated_at' => '2021-05-22 14:52:21',
                 'created_at' => '2021-05-22 14:52:21',
             ]);
+             //seeder user
+             $limit = 500;
+             $fake  = Faker::create();
+             for ($i = 0; $i < $limit; $i++) {
+                DB::table('users')->insert([
+                    'name'=> 	$fake->name,
+                    'role' => 0,
+                    'email'=> 	$fake->unique->email,
+                    'email_verified_at' => $fake->date("Y-m-d H:i:s"),
+                    'phone' => $fake->unique->phoneNumber,
+                    'password' => '$2y$10$SSTszQc1ltfGYBeVpwlOSOQoAIWdHgAkZIYckwxjbB2lIQP5UpfQS',
+                    'address' =>$fake->city,
+                    'updated_at' => $fake->date("Y-m-d H:i:s"),
+                    'created_at' => $fake->date("Y-m-d H:i:s"),
+                ]);
 
+             }
         }
 
 }

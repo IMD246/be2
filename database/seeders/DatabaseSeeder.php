@@ -32,5 +32,8 @@ class DatabaseSeeder extends Seeder
         $this->call(
             DataOrders::class,
         );
+        $this->call(
+            DataComment::class,
+        );
     }
 }

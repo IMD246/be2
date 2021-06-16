@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	 <title>Book Library</title>
+	<title>Book Library</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -20,17 +20,18 @@
 	<link rel="stylesheet" href="css/responsive.css">
 	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
+
 <body>
 
 	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
 		<!--************************************
 				Header Start
 		*************************************-->
-	 <header id="tg-header" class="tg-header tg-haslayout">
-        @include('template.404error')
+		<header id="tg-header" class="tg-header tg-haslayout">
+			@include('template.404error')
 
 
-        </header>
+		</header>
 		<!--************************************
 				Header End
 		*************************************-->
@@ -69,15 +70,17 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 
-                        @foreach($allAuthor as $value)
-	                        <div class="tg-authordetail">
+							@foreach($allAuthor as $value)
+							<div class="tg-authordetail">
 
-								<figure class="tg-authorimg">
-								<a href="./authordetail.blade.php?id={{ $value->id }}" ><img class="img-fluid" src="images/author/{{$value->image}}" alt="image description"></a>
+								<figure class="tg-authorimg" style="width: 100px; height: 350px">
+									<a href="./authordetail.blade.php?id={{ $value->id }}"><img class="img-fluid" src="images/author/{{$value->image}}" alt="image description"></a>
 								</figure>
 								<div class="tg-authorcontentdetail">
 									<div class="tg-sectionhead">
-									<a href="./authordetail.blade.php?id={{ $value->id }}" >	<h2><span>{{$value->publishedBooks}} Published Books</span>{{$value->nameAuthor}}</h2></a>
+										<a href="./authordetail.blade.php?id={{ $value->id }}">
+											<h2><span>{{$value->publishedBooks}} Published Books</span>{{$value->nameAuthor}}</h2>
+										</a>
 										<ul class="tg-socialicons">
 											<li class="tg-facebook"><a href="https://www.facebook.com/profile.php?id=100029050020645"><i class="fa fa-facebook"></i></a></li>
 											<li class="tg-twitter"><a href="jhttps://www.facebook.com/profile.php?id=100029050020645"><i class="fa fa-twitter"></i></a></li>
@@ -91,11 +94,11 @@
 										<div class="tg-sectionhead">
 											<h2>Books of {{$value->nameAuthor}}</h2>
 										</div>
-                                        @php
-                                            $arrBook=$bookOfAuthor->where("idAuthor","=",$value->id)->get();
-                                        @endphp
-                                        	<div class="row">
-                                        @foreach($arrBook as $valueBook)
+										@php
+										$arrBook=$bookOfAuthor->where("idAuthor","=",$value->id)->get();
+										@endphp
+										<div class="row">
+											@foreach($arrBook as $valueBook)
 
 
 
@@ -103,21 +106,21 @@
 												<div class="tg-postbook">
 													<figure class="tg-featureimg">
 														<div class="tg-bookimg">
-                                                        <a href="./book_detail.blade.php?idBook={{ $valueBook->idBook }}">
-															<div class="tg-frontcover">
+															<a href="./book_detail.blade.php?idBook={{ $valueBook->idBook }}">
+																<div class="tg-frontcover" style="width: 90px; height: 250px">
 
-                                                            <img src="{{url('images/books')}}/{{$valueBook->image}}" alt="image description">
+																	<img src="{{url('images/books')}}/{{$valueBook->image}}" alt="image description">
 
 
-                                                            </div>
-                                                            </a>
-                                                            <a href="./book_detail.blade.php?idBook={{ $valueBook->idBook }}">
-															<div class="tg-backcover">
+																</div>
+															</a>
+															<a href="./book_detail.blade.php?idBook={{ $valueBook->idBook }}">
+																<div class="tg-backcover">
 
-                                                            <img src="{{url('images/books')}}/{{$valueBook->image}}" alt="image description">
+																	<img src="{{url('images/books')}}/{{$valueBook->image}}" alt="image description">
 
-                                                            </div>
-                                                            </a>
+																</div>
+															</a>
 														</div>
 
 													</figure>
@@ -143,14 +146,14 @@
 													</div>
 												</div>
 											</div>
-                                        @endforeach
+											@endforeach
 										</div>
 									</div>
 								</div>
 							</div>
-                        @endforeach
+							@endforeach
 
-                <span>{{$allAuthor->links('pagination::bootstrap-4')}}</span>
+							<span>{{$allAuthor->links('pagination::bootstrap-4')}}</span>
 
 
 						</div>
@@ -167,7 +170,7 @@
 		<!--************************************
 				Footer Start
 		*************************************-->
-	      @include('template.405footer')
+		@include('template.405footer')
 
 		<!--************************************
 				Footer End

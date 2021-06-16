@@ -24,7 +24,7 @@ class TemplateController extends Controller
             ->get();
         $data1 = Book::orderBy('rate', 'desc')->limit(3)->get();
         $bookList = DB::table('book')
-            ->orderBy('rate', 'desc')
+            ->orderBy('salePrice', 'desc')
             ->join('author', 'book.idAuthor', '=', 'author.id')
             ->select('book.*', 'author.nameAuthor')
             ->limit(5)
@@ -32,7 +32,7 @@ class TemplateController extends Controller
         $temp1 = new Category;
         $temp = new Author;
         $featureArrayBook = DB::table('book')
-            ->orderBy('rate', 'desc')
+            ->orderBy('price')
             ->join('author', 'book.idAuthor', '=', 'author.id')
             ->select('book.*', 'author.nameAuthor')
             ->limit(4)
@@ -54,7 +54,7 @@ class TemplateController extends Controller
             ->where('category.id', 'like', '4')
             ->count();
         $allcategory = Category::all();
-        // $threenewstbook = Book::orderBy('created_at', 'desc')->limit(3)->get();
+
         $threenewstbook = DB::table('book')
             ->orderBy('created_at', 'desc')
             ->join('author', 'book.idAuthor', '=', 'author.id')
@@ -106,7 +106,9 @@ class TemplateController extends Controller
         $category = new Category;
         $allcategory = Category::all();
         $temp1 = new Author;
-        $allAuthor = Author::paginate(2);
+        $allAuthor =  DB::table('author')
+        ->limit(4)
+        ->paginate(5);
         $bookOfAuthor = new Book;
         $top3Author = Author::orderBy('publishedBooks', 'desc')->limit(3)->get();
         //return

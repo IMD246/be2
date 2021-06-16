@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
 @php
 $bookdetail=$book::where("idBook","=",$_GET['idBook'])->first();
-$arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
+$arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->limit(4)->get();
 
 @endphp
 
@@ -78,7 +78,11 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 
 										</div>
 										<br>
-										<h3> Name: {{$bookdetail->nameBook}}</h3>
+										<h5>Release date: <?php
+														$date = $bookdetail->created_at;
+														$timestring = $date->format('d-m-Y'); 
+														echo $timestring; ?></h5>
+										<h3> {{$bookdetail->nameBook}}</h3>
 										<div class="tg-description">
 											<p>{{$bookdetail->Description}}</p>
 											<br>
@@ -91,7 +95,7 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 
 												<p style="font-size: 20px; font-style: normal;">Sold book:
 													<span style="margin-left: 260px; font-size: 24px " class="new_price">
-													<sup> {{$bookdetail->SoldBooks}} books</sup>
+														<sup> {{$bookdetail->SoldBooks}} books</sup>
 													</span>
 												</p>
 												<div class="stars">
@@ -120,7 +124,7 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 																<figure class="tg-featureimg">
 																	<div class="tg-bookimg">
 																		<a href="./book_detail.blade.php?idBook={{ $item->idBook }}">
-																			<div class="tg-frontcover"><img src="{{url('images/books')}}/{{$item->image}}" alt="image description"></div>
+																			<div class="tg-frontcover" style="width: 90px; height: 250px"><img src="{{url('images/books')}}/{{$item->image}}" alt="image description"></div>
 																			<div class="tg-backcover"><img src="{{url('images/books')}}/{{$item->image}}" alt="image description"></div>
 																		</a>
 																	</div>
@@ -128,7 +132,7 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 																</figure>
 																<div class="tg-postbookcontent">
 																	<ul class="tg-bookscategories">
-																		<li><a href="../public/category_book.blade.php?idCategory={{ $item->idCategory }}">{{$temp1::find($item->idCategory)->nameCategory}}</a></li>
+																		<li><a href="../public/category_book.blade.php{{ $item->idCategory }}">{{$temp1::find($item->idCategory)->nameCategory}}</a></li>
 																	</ul>
 																	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
 																	<div class="tg-booktitle">
@@ -177,7 +181,7 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 																<label class="star star-2" for="star-2"></label>
 																<input class="star star-1" value="1" id="star-1" type="radio" name="star" />
 																<label class="star star-1" for="star-1"></label>
-																<input size="114" id="comment" type="text" name="comment" style="text-transform: none;" required placeholder="Enter your comment"/>
+																<input size="114" id="comment" type="text" name="comment" style="text-transform: none;" required placeholder="Enter your comment" />
 															</div>
 															<div class="col-md-7"></div>
 														</div>
@@ -223,7 +227,7 @@ $arrbook = $book::where("idAuthor","=",$bookdetail->idAuthor)->get();
 														</div>
 														@endforeach
 													</div>
-												
+
 												</div>
 											</div>
 										</div>

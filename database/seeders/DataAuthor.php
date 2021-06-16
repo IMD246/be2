@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class DataAuthor extends Seeder
 {
@@ -153,5 +154,18 @@ class DataAuthor extends Seeder
             'facebook' => "#",
             'Twitter' => "#",
         ]);
+        //seeder authors
+        $limit = 800;
+        $fake  = Faker::create();
+        for ($i = 0; $i < $limit; $i++) {
+            DB::table('Author')->insert([    
+                'publishedBooks' => $fake->numberBetween($min = 1, $max = 300),
+                'nameAuthor' =>$fake->sentence(2),
+                'Description' => $fake->sentence(70),
+                'image' => 'a'. $fake->numberBetween($min = 1, $max = 46).'.jpg',
+                'facebook' => "#",
+                'Twitter' => "#",
+            ]);
+        }
     }
 }
