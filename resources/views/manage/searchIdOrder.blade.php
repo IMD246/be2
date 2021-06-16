@@ -28,21 +28,21 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../author">Authors</a>
+                        <a class="nav-link" href="./author">Authors</a>
                     </li>
                     <li class="nav-item  active">
-                        <a class="nav-link" href="../category">Category</a>
+                        <a class="nav-link" href="./category">Category</a>
                     </li>
                     <li class="nav-item  active">
-                        <a class="nav-link" href="../managecarts">Orders</a>
+                        <a class="nav-link" href="./managecarts">Orders</a>
                     </li>
                     <li class="nav-item  active">
-                        <a class="nav-link" href="../manageusers">Users</a>
+                        <a class="nav-link" href="./manageusers">Users</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="./searchorder" method="get">
                     @csrf
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search id cart" name="idCart" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2"   required type="search" placeholder="Search id cart" name="idCart" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
@@ -93,7 +93,7 @@
 
                         </td>
                         <td>{{$item->created_at}}</td>
-                        <td>{{ $item->total}}0VND</td>
+                        <td>{{ $item->total}}.000VND</td>
                         <td><a href="{{url('/detailorder')}}/{{$item->id}}">Detail</a></td>
                        
                         <td>

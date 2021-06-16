@@ -59,7 +59,7 @@ if (isset($user)) {
                     </ul>
                     <form class="form-inline my-2 my-lg-0" action='{{url('book/search')}}' method="POST">
                         @csrf
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search book" name="nameBook" placeholder="Search" aria-label="Search">
+                        <input class="form-control mr-sm-2"   required type="search" placeholder="Search book" name="nameBook" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
