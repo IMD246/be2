@@ -126,7 +126,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <h4>Signup Newsletter!</h4>
-                            <h5>đăng kí ngay hôm nay</h5>
+                            <h5>Register today</h5>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <form class="tg-formtheme tg-formnewsletter">
